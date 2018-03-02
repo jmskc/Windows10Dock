@@ -35,6 +35,8 @@ namespace apptest1
         string[] fileButton1reset;
         string Label = "";
 
+        int testCounter = 3;
+
         //string[] fileButton2;
         //string[] fileButton3;
         //string[] fileButton4;
