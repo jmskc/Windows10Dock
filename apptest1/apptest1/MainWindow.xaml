@@ -1,0 +1,55 @@
+﻿<Window x:Name="window" x:Class="apptest1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:apptest1"
+
+        mc:Ignorable="d"
+        
+        
+        Title="testApp" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="Manual"
+        ShowInTaskbar="False" 
+        Topmost="True" 
+        AllowDrop="True" 
+        WindowStyle="None" 
+        AllowsTransparency="True" 
+        Background="Transparent"
+        MouseEnter="Mouse_Enter_Event"
+        MouseLeave="Mouse_Leave_Event"
+        DragEnter="Mouse_Enter_Event" Drop="window_Drop">
+
+    <!--default formatting of the window itself is done in the above section of code -->
+    <!--will have to set a second set or a piece of code to alter these depending on the orientation-->
+
+    <!--default grid for application deveolpment-->
+    <Window.Resources>
+        <Style TargetType="Image">
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"></Setter>
+            <Setter Property="Stretch" Value="Uniform"></Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Background="Transparent" Name="ParentGrid" AllowDrop="True" Style="{DynamicResource FocusVisual}" VerticalAlignment="Top" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Name="MainGridBorder" CornerRadius="0,0,5,5" BorderBrush="Red" BorderThickness="6">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" Opacity="0.2"/>
+            </Border.Effect>
+            <UniformGrid Columns="2" Rows="1" x:Name="MainGrid" Background="White" AllowDrop="True" VerticalAlignment="Top">
+                <Button x:Name="SettingsButton" Click="Button_Click_7" Width="{Binding Height, ElementName=SettingsButton}" Height="48" AllowDrop="True">
+                    <Image Source="/Icons/Settings.ico" HorizontalAlignment="Right"></Image>
+                </Button>
+            </UniformGrid>
+        </Border>
+        <TextBlock Grid.Row="2" Foreground="White" Name="TestTextBlock" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center"/>
+    </Grid>
+
+</Window>

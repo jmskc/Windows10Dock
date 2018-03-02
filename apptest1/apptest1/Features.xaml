@@ -1,0 +1,15 @@
+﻿<Window x:Class="apptest1.Features"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:apptest1"
+        mc:Ignorable="d"
+        Title="Features" Height="330" Width="330">
+    <Grid>
+        <WrapPanel MinWidth="{Binding MinWidth, ElementName=grid}" MinHeight="{Binding MinHeight, ElementName=grid}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="21,26,21,19"/>
+        <Button x:Name="FeaturesBackButton" Content=" ←" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" BorderBrush="{x:Null}" Height="30" Click="FeaturesBackButton_Click"/>
+        <Button x:Name="button" Content="Launch at Startup" HorizontalAlignment="Left" Margin="90,130,0,0" VerticalAlignment="Top" Width="124" Click="button_click"/>
+        <Button x:Name="button1" Content="Disable Launch at Startup" HorizontalAlignment="Left" Margin="81,190,0,0" VerticalAlignment="Top" Width="140" Click="button_click1"/>
+    </Grid>
+</Window>
