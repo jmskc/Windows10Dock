@@ -26,12 +26,11 @@
     <!--will have to set a second set or a piece of code to alter these depending on the orientation-->
 
     <!--default grid for application deveolpment-->
-    <Window.Resources>
-        <Style TargetType="Image">
-            <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"></Setter>
-            <Setter Property="Stretch" Value="Uniform"></Setter>
-        </Style>
 
+    <Window.Resources>
+        <Storyboard x:Key="Blink">
+            <DoubleAnimation RepeatBehavior="2x" AutoReverse="True" Duration="00:00:0.25" From="1" To="0.7" Storyboard.TargetProperty="(Button.Opacity)"/>
+        </Storyboard>
     </Window.Resources>
 
     <Grid Background="Transparent" Name="ParentGrid" AllowDrop="True" Style="{DynamicResource FocusVisual}" VerticalAlignment="Top" HorizontalAlignment="Center">
@@ -39,17 +38,27 @@
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border Name="MainGridBorder" CornerRadius="0,0,5,5" BorderBrush="Red" BorderThickness="6">
+        <Border Name="MainGridBorder" CornerRadius="0,0,5,5" BorderBrush="white" BorderThickness="6">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20" Opacity="0.2"/>
             </Border.Effect>
             <UniformGrid Columns="2" Rows="1" x:Name="MainGrid" Background="White" AllowDrop="True" VerticalAlignment="Top">
                 <Button x:Name="SettingsButton" Click="Button_Click_7" Width="{Binding Height, ElementName=SettingsButton}" Height="48" AllowDrop="True">
-                    <Image Source="/Icons/Settings.ico" HorizontalAlignment="Right"></Image>
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.Click" >
+                            <BeginStoryboard  Storyboard="{StaticResource Blink}">
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                    <Image Source="/Icons/Settings.ico" HorizontalAlignment="Center"/>
                 </Button>
             </UniformGrid>
         </Border>
-        <TextBlock Grid.Row="2" Foreground="White" Name="TestTextBlock" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Foreground="White" Name="TestTextBlock" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Margin="0,5,0,0">
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="1" ShadowDepth="1"/>
+            </TextBlock.Effect>
+        </TextBlock>
     </Grid>
 
 </Window>
