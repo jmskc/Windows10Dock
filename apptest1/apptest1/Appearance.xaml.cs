@@ -113,7 +113,6 @@ namespace apptest1
             mainWin.SettingsButton.Height = Properties.Settings.Default.IconSize;
             mainWin.Width = mainWin.MainGrid.Children.Count * Properties.Settings.Default.IconSize + 50;
             mainWin.MainGrid.Width = mainWin.MainGrid.Children.Count * Properties.Settings.Default.IconSize;
-            //mainWin.Height = Properties.Settings.Default.IconSize;
             mainWin.MainGrid.Height = Properties.Settings.Default.IconSize;
             double halfWidth = mainWin.Width / 2;
             mainWin.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;

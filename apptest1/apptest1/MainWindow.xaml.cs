@@ -410,7 +410,7 @@ namespace apptest1
             {
                 DoubleAnimation myDoubleAnimation = new DoubleAnimation
                 {
-                    From = 0 - MainGrid.Height + 1,
+                    From = 0 - MainGrid.Height + 1 - MainGridBorder.BorderThickness.Bottom,
                     To = 0,
                     Duration = new Duration(TimeSpan.FromSeconds(0.25)),
                 };
@@ -441,7 +441,7 @@ namespace apptest1
                 DoubleAnimation myDoubleAnimation = new DoubleAnimation
                 {
                     From = 1,
-                    To = 0 - MainGrid.Height + 1,
+                    To = 0 - MainGrid.Height + 1 - MainGridBorder.BorderThickness.Bottom*2,
                     Duration = new Duration(TimeSpan.FromSeconds(0.25)),
 
                 };
