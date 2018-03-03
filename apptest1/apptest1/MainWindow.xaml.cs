@@ -44,6 +44,8 @@ namespace apptest1
         //string[] fileButton4;
         //string[] fileButton5;
 
+            //this is test comment
+
         private ContextMenu CustomContextMenu = new ContextMenu();
         
         private double halfWidth;
