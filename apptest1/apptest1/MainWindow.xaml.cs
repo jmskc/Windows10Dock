@@ -36,24 +36,15 @@ namespace apptest1
         string Label = "";
 
         int counter = 2;
-<<<<<<< HEAD
         int maxItems = 4;
-=======
->>>>>>> parent of a18bd29... final test of tabtry 3.4
 
         //string[] fileButton2;
         //string[] fileButton3;
         //string[] fileButton4;
         //string[] fileButton5;
 
-<<<<<<< HEAD
-        
-=======
-            //this is test comment
-
->>>>>>> parent of a18bd29... final test of tabtry 3.4
         private ContextMenu CustomContextMenu = new ContextMenu();
-        
+
         private double halfWidth;
 
         public MainWindow()
@@ -67,7 +58,7 @@ namespace apptest1
 
             // WINDOW SIZE 
             this.MainGrid.Height = Properties.Settings.Default.IconSize;
-            this.Width = this.MainGrid.Children.Count * Properties.Settings.Default.IconSize+50;
+            this.Width = this.MainGrid.Children.Count * Properties.Settings.Default.IconSize + 50;
 
             // PROPERTIES
             MainGrid.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(Properties.Settings.Default.Opacity), ThemeColorValue, ThemeColorValue, ThemeColorValue));
@@ -98,7 +89,7 @@ namespace apptest1
                 color.ScR = 0;
                 dropShadow.Color = color;
             }
-            else if(Properties.Settings.Default.ThemeColor == 0)
+            else if (Properties.Settings.Default.ThemeColor == 0)
             {
                 dropShadow.Opacity = 0.7;
                 dropShadow.BlurRadius = 20;
@@ -109,7 +100,7 @@ namespace apptest1
             }
             MainGridBorder.Effect = dropShadow;
         }
-        
+
         /// <summary>
         /// Position Main Window on the screen.
         /// </summary>
@@ -257,7 +248,7 @@ namespace apptest1
         //}
         //private void Button_Drop_2(object sender, DragEventArgs e)
         //{
-            
+
         //    if (e.Data.GetDataPresent(DataFormats.FileDrop))
         //    {
         //        fileButton2 = (string[])e.Data.GetData(DataFormats.FileDrop);
@@ -335,11 +326,11 @@ namespace apptest1
         ///// </summary>
         //private void Button_Drop_4(object sender, DragEventArgs e)
         //{
-            
+
         //    if (e.Data.GetDataPresent(DataFormats.FileDrop))
         //    {
         //        Models.ShortcutModel Shortcut = new Models.ShortcutModel();
-                
+
         //        fileButton4 = (string[])e.Data.GetData(DataFormats.FileDrop);
 
         //        Shortcut.Path = String.Concat(fileButton4);
@@ -352,7 +343,7 @@ namespace apptest1
         //                                    BitmapSizeOptions.FromEmptyOptions());
 
         //            Icon4.Source = Shortcut.BitmapSource;
-                    
+
         //        }
 
         //        catch (FileNotFoundException)
@@ -475,17 +466,6 @@ namespace apptest1
         //    fileButton1reset = fileButton1;
         //}
 
-<<<<<<< HEAD
-        private void tabFunc(object sender, RoutedEventArgs e)
-        {
-            if(counter > maxItems)
-            {
-                
-            }
-        }
-=======
->>>>>>> parent of a18bd29... final test of tabtry 3.4
-
         /// <summary>
         /// Items dropped onto main grid will be added at the end of the column.
         /// </summary>
@@ -527,7 +507,11 @@ namespace apptest1
                     image.Source = new BitmapImage(new Uri("/Icons/FolderIcon.ico", UriKind.Relative));
                 }
             }
-            MainGrid.Columns += 1;
+            if (counter < maxItems)
+            {
+                MainGrid.Columns += 1;
+            }
+
             ShortcutList.Add(shortcut); //  Store shortcut in global List for later re-use.
             MainGrid.Children.Add(button);   // Add button at the end of Items Control in Main Window
             button.Content = image; //  Add image to the button
@@ -535,80 +519,54 @@ namespace apptest1
             ContextMenu contextMenu = new ContextMenu();
             button.ContextMenu = contextMenu;
             button.ToolTip = shortcut.Name;
-            
+
             // Re used Ryan's deletion code for this purpouse + Remove button from Item Control + resize window
             MenuItem DeleteItem = new MenuItem();
             DeleteItem.Header = "Delete";
             button.ContextMenu.Items.Clear();
-            DeleteItem.Click += (s, f) => {
-                                            MainGrid.Children.Remove(button);
-                                            MainGrid.Columns -= 1;
-                                            MainGrid.Width = MainGrid.Children.Count * Properties.Settings.Default.IconSize;
-                                            this.Width = this.MainGrid.Children.Count * Properties.Settings.Default.IconSize+50;
-                                            halfWidth = this.Width / 2;
-                                            this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
-<<<<<<< HEAD
-=======
+            DeleteItem.Click += (s, f) =>
+            {
+                MainGrid.Children.Remove(button);
+                MainGrid.Columns -= 1;
+                MainGrid.Width = MainGrid.Children.Count * Properties.Settings.Default.IconSize;
+                this.Width = this.MainGrid.Children.Count * Properties.Settings.Default.IconSize + 50;
+                halfWidth = this.Width / 2;
+                this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
 
                 //reduce the counter that checks the number of icons present
                 counter--;
->>>>>>> parent of a18bd29... final test of tabtry 3.4
             };
             button.MouseEnter += (s, f) => { TestTextBlock.Text = shortcut.Name; };
 
             button.ContextMenu.Items.Add(DeleteItem);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-            if (this.MainGrid.Children.Count % 7 == 0)
-            {
-                MainGrid.Columns = 7;
-                if (counter % 7 == 0)
+                //for ever set maximum number of icons in the grid (including the settings and exit)
+                if (counter % maxItems == 0)
                 {
-                    MainGrid.Rows = MainGrid.Rows + 1;
-                    MainGrid.Height = MainGrid.Height + MainGrid.Height / MainGrid.Rows;
-                    this.Height = MainGrid.Height + MainGrid.Height / MainGrid.Rows;
+                    //set the columns to a maximum
+                    MainGrid.Columns = maxItems;
+                    //increase rows by 1
+                    MainGrid.Rows++;
+                    //set the height + 50 (for icon seperation)
+                    MainGrid.Height = (MainGrid.Height + MainGrid.Height / MainGrid.Rows) + 50;
+                    //reset the top value to the top of the screen to compensate for the height change
                     Top = 0;
+
                 }
-                
-                
-=======
-            //for ever set maximum number of icons in the grid (including the settings and exit)
-            if (counter % 7 == 0)
-            {
-                //set the columns to a maximum
-                MainGrid.Columns = 7;
-                //increase rows by 1
-                MainGrid.Rows++;
-                //set the height + 50 (for icon seperation)
-                MainGrid.Height = (MainGrid.Height + MainGrid.Height / MainGrid.Rows) + 50;
-                //reset the top value to the top of the screen to compensate for the height change
-                Top = 0;
+                if (counter < maxItems)
+                {
+                    // Update Sizing and Positioning
+                    MainGrid.Width = MainGrid.Children.Count * Properties.Settings.Default.IconSize;
+                    this.Width = this.MainGrid.Children.Count * Properties.Settings.Default.IconSize + 50;
+                    halfWidth = this.Width / 2;
+                    this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
+                }
 
->>>>>>> parent of a18bd29... final test of tabtry 3.4
+                counter++;
+
             }
-            if(counter < 7)
-            {
-                // Update Sizing and Positioning
-                MainGrid.Width = MainGrid.Children.Count * Properties.Settings.Default.IconSize;
-                this.Width = this.MainGrid.Children.Count * Properties.Settings.Default.IconSize + 50;
-                halfWidth = this.Width / 2;
-                this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
-            }
-<<<<<<< HEAD
-            
-            
-
->>>>>>> parent of f1d16a3... Revert "tabtry3"
-=======
-            
->>>>>>> parent of a18bd29... final test of tabtry 3.4
-            counter++;
-
         }
     }
-}
 
 //https://www.codeproject.com/Questions/514592/DragplusandplusdropplusWPFplusC-plusgettingplusf
 
