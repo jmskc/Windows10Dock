@@ -524,6 +524,7 @@ namespace apptest1
             ContextMenu contextMenu = new ContextMenu();
             button.ContextMenu = contextMenu;
             button.ToolTip = shortcut.Name;
+            
             // Re used Ryan's deletion code for this purpouse + Remove button from Item Control + resize window
             MenuItem DeleteItem = new MenuItem();
             DeleteItem.Header = "Delete";
@@ -539,14 +540,34 @@ namespace apptest1
             button.MouseEnter += (s, f) => { TestTextBlock.Text = shortcut.Name; };
 
             button.ContextMenu.Items.Add(DeleteItem);
-            
-            
-            // Update Sizing and Positioning
-            MainGrid.Width = MainGrid.Children.Count * Properties.Settings.Default.IconSize;
-            this.Width = this.MainGrid.Children.Count * Properties.Settings.Default.IconSize + 50;
-            halfWidth = this.Width / 2;
-            this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
 
+<<<<<<< HEAD
+=======
+            if (this.MainGrid.Children.Count % 7 == 0)
+            {
+                MainGrid.Columns = 7;
+                if (counter % 7 == 0)
+                {
+                    MainGrid.Rows = MainGrid.Rows + 1;
+                    MainGrid.Height = MainGrid.Height + MainGrid.Height / MainGrid.Rows;
+                    this.Height = MainGrid.Height + MainGrid.Height / MainGrid.Rows;
+                    Top = 0;
+                }
+                
+                
+            }
+            if(counter < 7)
+            {
+                // Update Sizing and Positioning
+                MainGrid.Width = MainGrid.Children.Count * Properties.Settings.Default.IconSize;
+                this.Width = this.MainGrid.Children.Count * Properties.Settings.Default.IconSize + 50;
+                halfWidth = this.Width / 2;
+                this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
+            }
+            
+            
+
+>>>>>>> parent of f1d16a3... Revert "tabtry3"
             counter++;
 
         }
