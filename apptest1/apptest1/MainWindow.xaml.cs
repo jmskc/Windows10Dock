@@ -35,14 +35,14 @@ namespace apptest1
         string[] fileButton1reset;
         string Label = "";
 
+        int tempCounter = 2;
         int counter = 2;
+        int maxIcons = 4;
 
         //string[] fileButton2;
         //string[] fileButton3;
         //string[] fileButton4;
         //string[] fileButton5;
-
-            //this is test comment
 
         private ContextMenu CustomContextMenu = new ContextMenu();
         
@@ -467,7 +467,6 @@ namespace apptest1
         //    fileButton1reset = fileButton1;
         //}
 
-
         /// <summary>
         /// Items dropped onto main grid will be added at the end of the column.
         /// </summary>
@@ -535,17 +534,27 @@ namespace apptest1
                                             this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
 
                 //reduce the counter that checks the number of icons present
+                
                 counter--;
+                if (counter >= maxIcons)
+                {
+                    MainGrid.Columns = maxIcons;
+                }
+                if (counter % maxIcons == 0)
+                {
+                    MainGrid.Rows--;
+                }
             };
+
             button.MouseEnter += (s, f) => { TestTextBlock.Text = shortcut.Name; };
 
             button.ContextMenu.Items.Add(DeleteItem);
 
             //for ever set maximum number of icons in the grid (including the settings and exit)
-            if (counter % 7 == 0)
+            if (counter % maxIcons == 0)
             {
                 //set the columns to a maximum
-                MainGrid.Columns = 7;
+                MainGrid.Columns = maxIcons;
                 //increase rows by 1
                 MainGrid.Rows++;
                 //set the height + 50 (for icon seperation)
@@ -554,7 +563,7 @@ namespace apptest1
                 Top = 0;
 
             }
-            if(counter < 7)
+            if(counter < maxIcons)
             {
                 // Update Sizing and Positioning
                 MainGrid.Width = MainGrid.Children.Count * Properties.Settings.Default.IconSize;
@@ -562,8 +571,11 @@ namespace apptest1
                 halfWidth = this.Width / 2;
                 this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
             }
+
             
+
             counter++;
+            tempCounter = counter;
 
         }
     }
