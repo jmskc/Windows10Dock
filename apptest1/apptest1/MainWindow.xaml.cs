@@ -36,18 +36,14 @@ namespace apptest1
         string Label = "";
 
         int counter = 2;
+        int maxItems = 4;
 
         //string[] fileButton2;
         //string[] fileButton3;
         //string[] fileButton4;
         //string[] fileButton5;
-<<<<<<< HEAD
+
         
-=======
-
-            //this is test comment
-
->>>>>>> parent of a18bd29... final test of tabtry 3.4
         private ContextMenu CustomContextMenu = new ContextMenu();
         
         private double halfWidth;
@@ -471,6 +467,13 @@ namespace apptest1
         //    fileButton1reset = fileButton1;
         //}
 
+        private void tabFunc(object sender, RoutedEventArgs e)
+        {
+            if(counter > maxItems)
+            {
+                
+            }
+        }
 
         /// <summary>
         /// Items dropped onto main grid will be added at the end of the column.
@@ -545,17 +548,6 @@ namespace apptest1
             this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
 
             counter++;
-
-            if(this.MainGrid.Children.Count % 5 == 0)
-            {
-                MainGrid.Columns = 7;
-                if (counter % 7 == 0)
-                {
-                    MainGrid.Rows = MainGrid.Rows + 1;
-                }
-                
-                
-            }
 
         }
     }
