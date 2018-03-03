@@ -40,6 +40,9 @@
                 <Button x:Name="SettingsButton" Click="Button_Click_7" Width="{Binding Height, ElementName=SettingsButton}" Height="48" AllowDrop="True">
                     <Image Source="/Icons/Settings.ico" HorizontalAlignment="Center"/>
                 </Button>
+                <Button x:Name="ExitButton">
+                    <Image Source="/Icons/Exit.ico" HorizontalAlignment="Center"/>
+                </Button>
             </UniformGrid>
         </Border>
         <TextBlock Grid.Row="2" Foreground="White" Name="TestTextBlock" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Margin="0,5,0,0">

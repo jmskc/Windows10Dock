@@ -125,14 +125,13 @@ namespace apptest1
 
             ExitShortcut.Name = "Exit";
 
-            button.MouseEnter += (s, f) => { TestTextBlock.Text = ExitShortcut.Name; };
+            ExitButton.MouseEnter += (s, f) => { TestTextBlock.Text = ExitShortcut.Name; };
 
             image.Source = ExitShortcut.BitmapSource;
 
             ShortcutList.Add(ExitShortcut); //  Store shortcut in global List for later re-use.
-            MainGrid.Children.Add(button);   // Add button at the end of Items Control in Main Window
-            button.Content = image; //  Add image to the button
-            button.Click += (s, f) => { Environment.Exit(0); };   // Button click event
+            ExitButton.Content = image; //  Add image to the button
+            ExitButton.Click += (s, f) => { Environment.Exit(0); };   // Button click event
         }
 
         /// <summary>
