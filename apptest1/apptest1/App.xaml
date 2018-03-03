@@ -13,6 +13,9 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Storyboard x:Key="Blink">
+            <DoubleAnimation RepeatBehavior="2x" AutoReverse="True" Duration="00:00:0.25" From="1" To="0.85" Storyboard.TargetProperty="(Button.Opacity)"/>
+        </Storyboard>
         <SolidColorBrush x:Key="Button.Static.Background" Color="Transparent" Opacity="0.5"/>
         <SolidColorBrush x:Key="Button.Static.Border" Color="Transparent"/>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="White" Opacity="0.5"/>
@@ -37,6 +40,11 @@
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Padding" Value="0"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1.0" ScaleY="1.0"></ScaleTransform>
+                </Setter.Value>
+            </Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -44,13 +52,29 @@
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="Button.Click" >
+                                <BeginStoryboard  Storyboard="{StaticResource Blink}">
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard TargetProperty="RenderTransform.ScaleX">
+                                        <DoubleAnimation  AutoReverse="True" From="1" To="0.95" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                                <BeginStoryboard>
+                                    <Storyboard TargetProperty="RenderTransform.ScaleY">
+                                        <DoubleAnimation  AutoReverse="True" From="1" To="0.95" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
                             <Trigger Property="IsDefaulted" Value="true">
                                 <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
+                            <!--<Trigger Property="IsMouseOver" Value="true">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
                                 <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
-                            </Trigger>
+                            </Trigger>-->
                             <Trigger Property="IsPressed" Value="true">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
                                 <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>

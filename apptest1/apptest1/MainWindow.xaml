@@ -27,12 +27,6 @@
 
     <!--default grid for application deveolpment-->
 
-    <Window.Resources>
-        <Storyboard x:Key="Blink">
-            <DoubleAnimation RepeatBehavior="2x" AutoReverse="True" Duration="00:00:0.25" From="1" To="0.7" Storyboard.TargetProperty="(Button.Opacity)"/>
-        </Storyboard>
-    </Window.Resources>
-
     <Grid Background="Transparent" Name="ParentGrid" AllowDrop="True" Style="{DynamicResource FocusVisual}" VerticalAlignment="Top" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -44,12 +38,6 @@
             </Border.Effect>
             <UniformGrid Columns="2" Rows="1" x:Name="MainGrid" Background="White" AllowDrop="True" VerticalAlignment="Top">
                 <Button x:Name="SettingsButton" Click="Button_Click_7" Width="{Binding Height, ElementName=SettingsButton}" Height="48" AllowDrop="True">
-                    <Button.Triggers>
-                        <EventTrigger RoutedEvent="Button.Click" >
-                            <BeginStoryboard  Storyboard="{StaticResource Blink}">
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </Button.Triggers>
                     <Image Source="/Icons/Settings.ico" HorizontalAlignment="Center"/>
                 </Button>
             </UniformGrid>
