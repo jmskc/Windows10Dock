@@ -36,14 +36,22 @@ namespace apptest1
         string Label = "";
 
         int counter = 2;
+<<<<<<< HEAD
         int maxItems = 4;
+=======
+>>>>>>> parent of a18bd29... final test of tabtry 3.4
 
         //string[] fileButton2;
         //string[] fileButton3;
         //string[] fileButton4;
         //string[] fileButton5;
 
+<<<<<<< HEAD
         
+=======
+            //this is test comment
+
+>>>>>>> parent of a18bd29... final test of tabtry 3.4
         private ContextMenu CustomContextMenu = new ContextMenu();
         
         private double halfWidth;
@@ -467,6 +475,7 @@ namespace apptest1
         //    fileButton1reset = fileButton1;
         //}
 
+<<<<<<< HEAD
         private void tabFunc(object sender, RoutedEventArgs e)
         {
             if(counter > maxItems)
@@ -474,6 +483,8 @@ namespace apptest1
                 
             }
         }
+=======
+>>>>>>> parent of a18bd29... final test of tabtry 3.4
 
         /// <summary>
         /// Items dropped onto main grid will be added at the end of the column.
@@ -536,11 +547,18 @@ namespace apptest1
                                             this.Width = this.MainGrid.Children.Count * Properties.Settings.Default.IconSize+50;
                                             halfWidth = this.Width / 2;
                                             this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
+<<<<<<< HEAD
+=======
+
+                //reduce the counter that checks the number of icons present
+                counter--;
+>>>>>>> parent of a18bd29... final test of tabtry 3.4
             };
             button.MouseEnter += (s, f) => { TestTextBlock.Text = shortcut.Name; };
 
             button.ContextMenu.Items.Add(DeleteItem);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
             if (this.MainGrid.Children.Count % 7 == 0)
@@ -555,6 +573,20 @@ namespace apptest1
                 }
                 
                 
+=======
+            //for ever set maximum number of icons in the grid (including the settings and exit)
+            if (counter % 7 == 0)
+            {
+                //set the columns to a maximum
+                MainGrid.Columns = 7;
+                //increase rows by 1
+                MainGrid.Rows++;
+                //set the height + 50 (for icon seperation)
+                MainGrid.Height = (MainGrid.Height + MainGrid.Height / MainGrid.Rows) + 50;
+                //reset the top value to the top of the screen to compensate for the height change
+                Top = 0;
+
+>>>>>>> parent of a18bd29... final test of tabtry 3.4
             }
             if(counter < 7)
             {
@@ -564,10 +596,14 @@ namespace apptest1
                 halfWidth = this.Width / 2;
                 this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
             }
+<<<<<<< HEAD
             
             
 
 >>>>>>> parent of f1d16a3... Revert "tabtry3"
+=======
+            
+>>>>>>> parent of a18bd29... final test of tabtry 3.4
             counter++;
 
         }
