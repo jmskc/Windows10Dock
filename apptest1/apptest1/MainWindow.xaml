@@ -31,6 +31,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
         <Border Name="MainGridBorder" CornerRadius="0,0,5,5" BorderBrush="white" BorderThickness="6">
             <Border.Effect>
@@ -45,11 +46,20 @@
                 </Button>
             </UniformGrid>
         </Border>
-        <TextBlock Grid.Row="2" Foreground="White" Name="TestTextBlock" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Margin="0,5,0,0">
-            <TextBlock.Effect>
-                <DropShadowEffect BlurRadius="1" ShadowDepth="1"/>
-            </TextBlock.Effect>
-        </TextBlock>
-    </Grid>
+        <Grid Name="LabelGrid" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border Name="LabelBorder" CornerRadius="2" BorderThickness="6" BorderBrush="White">
+                <TextBlock Background="White" Grid.Row="2" Name="TestTextBlock" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" MinWidth="60">
+                </TextBlock>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" Opacity="0.2"/>
+                </Border.Effect>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid HorizontalAlignment="Center" Width="35" Margin="0,5,0,0">
+                <Polygon Name="Triangle" Points="20,0 10,10 30,10" Fill="{Binding Background, ElementName=MainGrid}" HorizontalAlignment="Center" Width="40" />
+            </Grid>
+        </Grid>
 
+    </Grid>
 </Window>
