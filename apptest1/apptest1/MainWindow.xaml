@@ -20,7 +20,8 @@
         Background="Transparent"
         MouseEnter="Mouse_Enter_Event"
         MouseLeave="Mouse_Leave_Event"
-        DragEnter="Mouse_Enter_Event" Drop="window_Drop">
+        DragEnter="Mouse_Enter_Event" 
+        Drop="window_Drop">
 
     <!--default formatting of the window itself is done in the above section of code -->
     <!--will have to set a second set or a piece of code to alter these depending on the orientation-->
