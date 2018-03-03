@@ -58,11 +58,17 @@ namespace apptest1
             this.Width = this.MainGrid.Children.Count * Properties.Settings.Default.IconSize+50;
 
             // PROPERTIES
-            MainGrid.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(Properties.Settings.Default.Opacity), ThemeColorValue, ThemeColorValue, ThemeColorValue));
-            MainGridBorder.BorderBrush = MainGrid.Background;
-            SettingsButton.Height = Properties.Settings.Default.IconSize;
 
             InitializeDropShadowEffect();
+            LabelBorder.Visibility = Visibility.Hidden;
+            Triangle.Visibility = Visibility.Hidden;
+            MainGrid.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(Properties.Settings.Default.Opacity), ThemeColorValue, ThemeColorValue, ThemeColorValue));
+
+            // Label
+            MainGridBorder.BorderBrush = MainGrid.Background;
+            LabelBorder.BorderBrush = MainGrid.Background;
+            TestTextBlock.Background = MainGrid.Background;
+            SettingsButton.Height = Properties.Settings.Default.IconSize;
 
             // POSITION
             //can probably move this into a method/class just returning the variables?
@@ -79,12 +85,14 @@ namespace apptest1
             Color color = new Color();
             if (Properties.Settings.Default.ThemeColor == 255)
             {
+                
                 dropShadow.Opacity = 0.2;
                 dropShadow.BlurRadius = 20;
                 color.ScB = 0;
                 color.ScG = 0;
                 color.ScR = 0;
                 dropShadow.Color = color;
+                TestTextBlock.Foreground = Brushes.Black;
             }
             else if(Properties.Settings.Default.ThemeColor == 0)
             {
@@ -94,6 +102,7 @@ namespace apptest1
                 color.ScG = 0;
                 color.ScR = 0;
                 dropShadow.Color = color;
+                TestTextBlock.Foreground = Brushes.White;
             }
             MainGridBorder.Effect = dropShadow;
         }
@@ -400,6 +409,8 @@ namespace apptest1
         private void Mouse_Enter_Event(object sender, RoutedEventArgs e)
         {
             TestTextBlock.Visibility = Visibility.Visible;
+            Triangle.Visibility = Visibility.Visible;
+            LabelBorder.Visibility = Visibility.Visible;
 
             if (IsWindowOpen<Settings>("Settings1") || IsWindowOpen<Appearance>("Appearance1"))
             {
@@ -430,6 +441,8 @@ namespace apptest1
         private void Mouse_Leave_Event(object sender, RoutedEventArgs e)
         {
             TestTextBlock.Visibility = Visibility.Hidden;
+            Triangle.Visibility = Visibility.Hidden;
+            LabelBorder.Visibility = Visibility.Hidden;
 
             if (IsWindowOpen<Settings>("Settings1") || IsWindowOpen<Appearance>("Appearance1"))
             {

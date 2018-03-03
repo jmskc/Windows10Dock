@@ -99,6 +99,8 @@ namespace apptest1
             mainWin.MainGrid.Height = Properties.Settings.Default.IconSize;
             double halfWidth = mainWin.Width / 2;
             mainWin.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
+            mainWin.LabelBorder.BorderBrush = mainWin.MainGrid.Background;
+            mainWin.TestTextBlock.Background = mainWin.MainGrid.Background;
             Properties.Settings.Default.Save();
         }
 
@@ -140,6 +142,12 @@ namespace apptest1
                 mainWin.MainGrid.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(Properties.Settings.Default.Opacity), themeColorValue, themeColorValue, themeColorValue));
                 mainWin.MainGridBorder.BorderBrush = mainWin.MainGrid.Background;
                 mainWin.MainGridBorder.Effect = dropShadowEffect;
+
+                // Label
+                mainWin.TestTextBlock.Foreground = Brushes.Black;
+                mainWin.LabelBorder.BorderBrush = mainWin.MainGrid.Background;
+                mainWin.TestTextBlock.Background = mainWin.MainGrid.Background;
+                mainWin.LabelGrid.Effect = dropShadowEffect;
             }
             else if(ThemeColor.SelectedValue==ThemeColorDark)
             {
@@ -154,6 +162,13 @@ namespace apptest1
                 mainWin.MainGrid.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(Properties.Settings.Default.Opacity), themeColorValue, themeColorValue, themeColorValue));
                 mainWin.MainGridBorder.BorderBrush = mainWin.MainGrid.Background;
                 mainWin.MainGridBorder.Effect = dropShadowEffect;
+
+                // Label
+                mainWin.TestTextBlock.Foreground = Brushes.White;
+                mainWin.LabelBorder.BorderBrush = mainWin.MainGrid.Background;
+                mainWin.TestTextBlock.Background = mainWin.MainGrid.Background;
+                mainWin.LabelGrid.Effect = dropShadowEffect;
+
             }
             Properties.Settings.Default.Save();
         }
