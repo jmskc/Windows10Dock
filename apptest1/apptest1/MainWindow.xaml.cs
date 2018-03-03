@@ -513,11 +513,7 @@ namespace apptest1
                     image.Source = new BitmapImage(new Uri("/Icons/FolderIcon.ico", UriKind.Relative));
                 }
             }
-            if(MainGrid.Columns < 7)
-            {
-                MainGrid.Columns += 1;
-            }
-            
+            MainGrid.Columns += 1;
             ShortcutList.Add(shortcut); //  Store shortcut in global List for later re-use.
             MainGrid.Children.Add(button);   // Add button at the end of Items Control in Main Window
             button.Content = image; //  Add image to the button
@@ -545,12 +541,12 @@ namespace apptest1
             if (this.MainGrid.Children.Count % 7 == 0)
             {
                 MainGrid.Columns = 7;
-                if (this.MainGrid.Children.Count % 7 == 0)
+                if (counter % 7 == 0)
                 {
                     MainGrid.Rows = MainGrid.Rows + 1;
-                    //MainGrid.Height = MainGrid.Height + MainGrid.Height / MainGrid.Rows;
-                    //this.Height = MainGrid.Height + MainGrid.Height / MainGrid.Rows;
-                    //Top =;
+                    MainGrid.Height = MainGrid.Height + MainGrid.Height / MainGrid.Rows;
+                    this.Height = MainGrid.Height + MainGrid.Height / MainGrid.Rows;
+                    Top = 0;
                 }
                 
                 
