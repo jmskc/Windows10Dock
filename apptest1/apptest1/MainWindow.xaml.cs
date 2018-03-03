@@ -35,7 +35,7 @@ namespace apptest1
         string[] fileButton1reset;
         string Label = "";
 
-        int counter = 1;
+        int counter = 2;
 
         //string[] fileButton2;
         //string[] fileButton3;
@@ -538,10 +538,17 @@ namespace apptest1
             halfWidth = this.Width / 2;
             this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
 
+            counter++;
+
             if(this.MainGrid.Children.Count % 5 == 0)
             {
-                this.Height = Properties.Settings.Default.IconSize / counter % 7 * 2;
-                counter++;
+                MainGrid.Columns = 7;
+                if (counter % 7 == 0)
+                {
+                    MainGrid.Rows = MainGrid.Rows + 1;
+                }
+                
+                
             }
 
         }
