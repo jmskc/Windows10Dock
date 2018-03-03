@@ -537,26 +537,23 @@ namespace apptest1
                                             this.Width = this.MainGrid.Children.Count * Properties.Settings.Default.IconSize+50;
                                             halfWidth = this.Width / 2;
                                             this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
-
-                //reduce the counter that checks the number of icons present
-                counter--;
             };
             button.MouseEnter += (s, f) => { TestTextBlock.Text = shortcut.Name; };
 
             button.ContextMenu.Items.Add(DeleteItem);
 
-            //for ever set maximum number of icons in the grid (including the settings and exit)
-            if (counter % 7 == 0)
+            if (this.MainGrid.Children.Count % 7 == 0)
             {
-                //set the columns to a maximum
                 MainGrid.Columns = 7;
-                //increase rows by 1
-                MainGrid.Rows++;
-                //set the height + 50 (for icon seperation)
-                MainGrid.Height = (MainGrid.Height + MainGrid.Height / MainGrid.Rows) + 50;
-                //reset the top value to the top of the screen to compensate for the height change
-                Top = 0;
-
+                if (this.MainGrid.Children.Count % 7 == 0)
+                {
+                    MainGrid.Rows = MainGrid.Rows + 1;
+                    MainGrid.Height = (MainGrid.Height + MainGrid.Height / MainGrid.Rows) + 50;
+                    //this.Height = MainGrid.Height + MainGrid.Height / MainGrid.Rows;
+                    Top = 0;
+                }
+                
+                
             }
             if(counter < 7)
             {
