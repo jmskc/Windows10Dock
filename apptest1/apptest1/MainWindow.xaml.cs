@@ -544,9 +544,9 @@ namespace apptest1
                 if (this.MainGrid.Children.Count % 7 == 0)
                 {
                     MainGrid.Rows = MainGrid.Rows + 1;
-                    //MainGrid.Height = MainGrid.Height + MainGrid.Height / MainGrid.Rows;
+                    MainGrid.Height = (MainGrid.Height + MainGrid.Height / MainGrid.Rows) + 50;
                     //this.Height = MainGrid.Height + MainGrid.Height / MainGrid.Rows;
-                    //Top =;
+                    Top = 0;
                 }
                 
                 
@@ -560,8 +560,6 @@ namespace apptest1
                 this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
             }
             
-            
-
             counter++;
 
         }
