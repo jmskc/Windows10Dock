@@ -22,7 +22,8 @@ namespace apptest1
     {
         private MainWindow mainWin = Application.Current.Windows.Cast<Window>().FirstOrDefault(window => window is MainWindow) as MainWindow;   //  Main Window
         byte themeColorValue = Convert.ToByte(Properties.Settings.Default.ThemeColor);
-        
+        byte screenPositionValue = Convert.ToByte(Properties.Settings.Default.ScreenPosition);
+
         public Appearance()
         {
             InitializeComponent();
@@ -89,7 +90,7 @@ namespace apptest1
         /// </summary>
         private void OpacitySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) 
         {
-            byte themeColorValue = Convert.ToByte(Properties.Settings.Default.ThemeColor);
+            themeColorValue = Convert.ToByte(Properties.Settings.Default.ThemeColor);
             int val = Convert.ToInt32(OpacitySlider.Value);
             double displayVal = Properties.Settings.Default.Opacity / 2.55;
             Properties.Settings.Default.Opacity = val;
@@ -110,14 +111,20 @@ namespace apptest1
         private void IconSizeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             int val = Convert.ToInt32(IconSizeSlider.Value);
+
+            // Display
             IconSizeValue.Text = val.ToString() + "px";
+
             Properties.Settings.Default.IconSize = val;
             mainWin.SettingsButton.Height = Properties.Settings.Default.IconSize;
             mainWin.Width = mainWin.MainGrid.Children.Count * Properties.Settings.Default.IconSize + 50;
             mainWin.MainGrid.Width = mainWin.MainGrid.Children.Count * Properties.Settings.Default.IconSize;
             mainWin.MainGrid.Height = Properties.Settings.Default.IconSize;
+
+            // Reposition 
             double halfWidth = mainWin.Width / 2;
             mainWin.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
+
             Properties.Settings.Default.Save();
         }
 
@@ -139,6 +146,8 @@ namespace apptest1
                 Properties.Settings.Default.ThemeColor = 255;
                 themeColorValue = 255;
                 ThemeColor.SelectedValue = ThemeColorLight;
+
+                // Main Window Size
                 mainWin.MainGrid.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(Properties.Settings.Default.Opacity), themeColorValue, themeColorValue, themeColorValue));
                 mainWin.MainGridBorder.BorderBrush = mainWin.MainGrid.Background;
                 mainWin.MainGridBorder.Effect = dropShadowEffect;
@@ -159,6 +168,8 @@ namespace apptest1
                 Properties.Settings.Default.ThemeColor = 0;
                 themeColorValue = 0;
                 ThemeColor.SelectedValue = ThemeColorDark;
+
+                // Main Window Size
                 mainWin.MainGrid.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(Properties.Settings.Default.Opacity), themeColorValue, themeColorValue, themeColorValue));
                 mainWin.MainGridBorder.BorderBrush = mainWin.MainGrid.Background;
                 mainWin.MainGridBorder.Effect = dropShadowEffect;
@@ -171,6 +182,21 @@ namespace apptest1
 
             }
             Properties.Settings.Default.Save();
+        }
+
+        /// <summary>
+        /// Change dock position on the screen.
+        /// </summary>
+        private void ScreenPositionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ScreenPositionComboBox.SelectedValue == TopPosition)
+            {
+
+            }
+            else if (ScreenPositionComboBox.SelectedValue == BottomPosition)
+            {
+                mainWin.Top = SystemParameters.PrimaryScreenHeight - mainWin.MainGrid.Height;
+            }
         }
     }
 }

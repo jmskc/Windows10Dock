@@ -57,6 +57,22 @@
                             <ComboBoxItem x:Name="ThemeColorDark" Content="Dark"/>
                         </ComboBox>
                     </Grid>
+                    <Grid x:Name="ScreenPosition" HorizontalAlignment="Center" Height="150" VerticalAlignment="Top" Width="250" AutomationProperties.ItemType="SettingsBlock" Margin="25,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="Position on the Screen" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBlock Grid.Row="2" x:Name="ScreenPositionTextBlock" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="#BF000000" Text="Select position on the screen" HorizontalAlignment="Center"/>
+                        <ComboBox Grid.Row="1" x:Name="ScreenPositionComboBox" VerticalAlignment="Center" SelectionChanged="ScreenPositionComboBox_SelectionChanged">
+                            <ComboBoxItem x:Name="TopPosition" Content="Top"/>
+                            <ComboBoxItem x:Name="BottomPosition" Content="Bottom"/>
+                        </ComboBox>
+                    </Grid>
                 </WrapPanel>
             </Grid>
             <Button x:Name="AppearanceBackButton" Content="←    Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" BorderBrush="{x:Null}" Height="30" Click="AppearanceBackButton_Click" FontSize="16"/>
