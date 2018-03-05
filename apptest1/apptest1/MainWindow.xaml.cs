@@ -1,24 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.IO;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Diagnostics;
 using System.Windows.Media.Animation;
 using System.Windows.Interop;
-using DynamicImageHandler;
 using System.Windows.Media.Effects;
-using System.Windows.Threading;
 
 namespace apptest1
 {
@@ -509,10 +500,24 @@ namespace apptest1
             MainGrid.Children.Add(button);   // Add button at the end of Items Control in Main Window
             button.Content = image; //  Add image to the button
             button.Click += (s, f) => 
-            {
-                Process.Start(shortcut.FileButton.ElementAt(0));
-                Overlay_Image(button,image.Source);
-            };   // Button click event
+                {
+                    Process myProcess = null;
+                    myProcess = Process.Start(shortcut.FileButton.ElementAt(0));             
+                    do
+                    {
+                        if (myProcess.Responding == true)
+                        {
+                            myProcess.Refresh();
+                            Overlay_Image(button, image.Source);
+                        }
+                        if (!myProcess.HasExited == true)
+                        {
+                            Disable_Overlay(button, image.Source);
+                        }
+                    }
+                    while (!myProcess.WaitForExit(1000));
+                    
+                };   // Button click event
             ContextMenu contextMenu = new ContextMenu();
             button.ContextMenu = contextMenu;
             button.ToolTip = shortcut.Name;
@@ -548,26 +553,15 @@ namespace apptest1
         private void Overlay_Image(Button button, ImageSource original)
         {
             Image image = new Image();
-            image.Source = new BitmapImage(new Uri("/Icons/Loading.png", UriKind.Relative));
+            image.Source = new BitmapImage(new Uri("/Icons/Loading.ico", UriKind.Relative));
             ImageBrush ib = new ImageBrush(original);
             button.Background = ib;
             button.Content = image;
-            Disable_Overlay(button, original);
         }
         private void Disable_Overlay(Button button, ImageSource original)
-        { 
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0,0,5);
-            timer.Start();
-            timer.Tick = TimerTick(button, original);
-        }
-        private void TimerTick(object sender, EventArgs e,Button button, ImageSource original)
         {
-            DispatcherTimer timer = (DispatcherTimer)sender;
-            timer.Stop();
-            timer.Tick -= TimerTick(sender,e,button,original);
             button.Content = original;
-            button.Background = null;
+           //button.Background = null; 
         }
     }
 }

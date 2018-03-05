@@ -182,7 +182,6 @@ C:\Users\Callum\Source\Repos\Windows10Dock\apptest1\apptest1\bin\Debug\DynamicIm
 C:\Users\Callum\Source\Repos\Windows10Dock\apptest1\apptest1\bin\Debug\FirstFloor.ModernUI.dll
 C:\Users\Callum\Source\Repos\Windows10Dock\apptest1\apptest1\bin\Debug\FreeImage-dotnet-core.dll
 C:\Users\Callum\Source\Repos\Windows10Dock\apptest1\apptest1\bin\Debug\FirstFloor.ModernUI.xml
-C:\Users\Callum\Source\Repos\Windows10Dock\apptest1\apptest1\obj\Debug\apptest1.csprojResolveAssemblyReference.cache
 C:\Users\Callum\Source\Repos\Windows10Dock\apptest1\apptest1\obj\Debug\Appearance.g.cs
 C:\Users\Callum\Source\Repos\Windows10Dock\apptest1\apptest1\obj\Debug\Features.g.cs
 C:\Users\Callum\Source\Repos\Windows10Dock\apptest1\apptest1\obj\Debug\MainWindow.g.cs
