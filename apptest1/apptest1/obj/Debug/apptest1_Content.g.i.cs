@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/exit.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/loading-sun-load-wait-apple-3012323ff3f6fb6a-512x512.png")]
 
 

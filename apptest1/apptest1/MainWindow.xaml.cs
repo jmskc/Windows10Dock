@@ -494,10 +494,8 @@ namespace apptest1
                                             ShellEx.GetBitmapFromFilePath(shortcut.Path, ShellEx.IconSizeEnum.ExtraLargeIcon).GetHicon(),
                                             Int32Rect.Empty,
                                             BitmapSizeOptions.FromEmptyOptions());
-
                     image.Source = shortcut.BitmapSource;
                     button.Content = shortcut.FileButton;
-
                 }
 
                 catch (FileNotFoundException)
@@ -509,7 +507,11 @@ namespace apptest1
             ShortcutList.Add(shortcut); //  Store shortcut in global List for later re-use.
             MainGrid.Children.Add(button);   // Add button at the end of Items Control in Main Window
             button.Content = image; //  Add image to the button
-            button.Click += (s, f) => { Process.Start(shortcut.FileButton.ElementAt(0)); };   // Button click event
+            button.Click += (s, f) => 
+            {
+                Process.Start(shortcut.FileButton.ElementAt(0));
+                Overlay_Image(button,image.Source);
+            };   // Button click event
             ContextMenu contextMenu = new ContextMenu();
             button.ContextMenu = contextMenu;
             button.ToolTip = shortcut.Name;
@@ -536,6 +538,20 @@ namespace apptest1
             halfWidth = this.Width / 2;
             this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private void Overlay_Image(Button button, ImageSource original)
+        {
+            Image image = new Image();
+            image.Source = new BitmapImage(new Uri("/Icons/Loading.png", UriKind.Relative));
+            ImageBrush ib = new ImageBrush(original);
+            button.Background = ib;
+            button.Content = image;
+            
         }
     }
 }
