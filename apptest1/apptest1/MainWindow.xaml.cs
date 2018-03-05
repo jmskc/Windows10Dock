@@ -18,6 +18,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Interop;
 using DynamicImageHandler;
 using System.Windows.Media.Effects;
+using System.Windows.Threading;
 
 namespace apptest1
 {
@@ -551,7 +552,22 @@ namespace apptest1
             ImageBrush ib = new ImageBrush(original);
             button.Background = ib;
             button.Content = image;
-            
+            Disable_Overlay(button, original);
+        }
+        private void Disable_Overlay(Button button, ImageSource original)
+        { 
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0,0,5);
+            timer.Start();
+            timer.Tick = TimerTick(button, original);
+        }
+        private void TimerTick(object sender, EventArgs e,Button button, ImageSource original)
+        {
+            DispatcherTimer timer = (DispatcherTimer)sender;
+            timer.Stop();
+            timer.Tick -= TimerTick(sender,e,button,original);
+            button.Content = original;
+            button.Background = null;
         }
     }
 }
