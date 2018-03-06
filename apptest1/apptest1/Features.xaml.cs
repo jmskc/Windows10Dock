@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,14 +32,19 @@ namespace apptest1
             this.Close();
             settings.ShowDialog();
         }
-
-        private void button_click(object sender, RoutedEventArgs e)
+        private void Startup_Click(object sender, RoutedEventArgs e)
+        {
+            MediaPlayer mplayer = new MediaPlayer();
+            mplayer.Open(new Uri(@"C:\Users\Vespir\Desktop\apptest1\dickhole.mp3", UriKind.Relative));
+            mplayer.Play();
+        }
+        private void enable(object sender, RoutedEventArgs e)
         {
             RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
             reg.SetValue("My Application", @"C:\Users\Vespir\Desktop\apptest1\setup.exe");
             MessageBox.Show("Program is now enabled at startup.");
         }
-        private void button_click1(object sender, RoutedEventArgs e)
+        private void disable(object sender, RoutedEventArgs e)
         {
             RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
             reg.DeleteValue("My Application", false);

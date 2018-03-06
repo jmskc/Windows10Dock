@@ -5,11 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:apptest1"
         mc:Ignorable="d"
-        Title="Features" Height="330" Width="330">
-    <Grid>
-        <WrapPanel MinWidth="{Binding MinWidth, ElementName=grid}" MinHeight="{Binding MinHeight, ElementName=grid}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="21,26,21,19"/>
-        <Button x:Name="FeaturesBackButton" Content=" ←" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" BorderBrush="{x:Null}" Height="30" Click="FeaturesBackButton_Click"/>
-        <Button x:Name="button" Content="Launch at Startup" HorizontalAlignment="Left" Margin="90,130,0,0" VerticalAlignment="Top" Width="124" Click="button_click"/>
-        <Button x:Name="button1" Content="Disable Launch at Startup" HorizontalAlignment="Left" Margin="81,190,0,0" VerticalAlignment="Top" Width="140" Click="button_click1"/>
+        Title="Features" Height="268.053" Width="500">
+    <Grid Margin="0,0,0,94">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="23*"/>
+            <ColumnDefinition Width="18*"/>
+            <ColumnDefinition Width="24*"/>
+            <ColumnDefinition Width="284*"/>
+            <ColumnDefinition Width="146*"/>
+        </Grid.ColumnDefinitions>
+        <WrapPanel MinWidth="{Binding MinWidth, ElementName=grid}" MinHeight="{Binding MinHeight, ElementName=grid}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="182.8,240,100.8,232.8" Grid.Column="3"/>
+        <Button x:Name="FeaturesBackButton" Content=" ←" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" BorderBrush="{x:Null}" Height="30" Click="FeaturesBackButton_Click" Grid.ColumnSpan="4"/>
+        <CheckBox Content="Launch at Startup" HorizontalAlignment="Left" Margin="13.8,73,0,0" VerticalAlignment="Top" Width="216" Checked="enable" Unchecked="disable" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Height="20" Margin="13.8,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273" Grid.Column="2" Grid.ColumnSpan="2"><Run FontWeight="Bold" Text="Enable Toolbar to commence at "/><Run FontWeight="Bold" Text="boot up"/><Run FontWeight="Bold" Text=":"/></TextBlock>
+        <Button x:Name="SoundStartup" Content="Help Startup" Grid.Column="3" HorizontalAlignment="Left" Margin="283.8,58,0,0" VerticalAlignment="Top" Width="90" Grid.ColumnSpan="2" Click="Startup_Click" Height="30"/>
     </Grid>
 </Window>

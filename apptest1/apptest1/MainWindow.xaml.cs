@@ -31,9 +31,9 @@ namespace apptest1
         DropShadowEffect dropShadow = new DropShadowEffect();
 
         private byte ThemeColorValue;   // RGB color of the window.
-        string[] fileButton1;
-        string[] fileButton1reset;
-        string Label = "";
+        //string[] fileButton1;
+        //string[] fileButton1reset;
+        //string Label = "";
 
         //string[] fileButton2;
         //string[] fileButton3;
@@ -224,6 +224,12 @@ namespace apptest1
 
         //            //sets the source image to the icon associated  
         //            Icon1.Source = bmpSrc;
+                      
+                      /* string appName = System.IO.Path.GetFileNameWithoutExtension(result); //Gets name of the app using filename without extention
+                       * 
+                       * label.Text = appName; //label is the name text display we make underneath the icon dragged, the text stored inside appName gets set into the label using .text
+                       * 
+                       */
 
         //        }
         //        //catches an error that occurs if the icon image is not found (needed for folders as a priority)
