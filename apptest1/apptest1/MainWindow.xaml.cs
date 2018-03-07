@@ -435,6 +435,39 @@ namespace apptest1
             }
         }
 
+        //this method fixes the dock to open status when a drag enter or drag leave event occurs
+        //effectively allowing the user to drag between the background and the buttons without the dock flipping open and closed
+        private void Drag_Stop_Event(object sender, DragEventArgs e)
+        {
+            TestTextBlock.Visibility = Visibility.Visible;
+            Triangle.Visibility = Visibility.Visible;
+            LabelBorder.Visibility = Visibility.Visible;
+
+            if (IsWindowOpen<Settings>("Settings1") || IsWindowOpen<Appearance>("Appearance1"))
+            {
+
+            }
+            else
+            {
+                DoubleAnimation myDoubleAnimation = new DoubleAnimation
+                {
+                    //srt the values to not change
+                    From = 0 ,
+                    To = 0 ,
+                    Duration = new Duration(TimeSpan.FromSeconds(0.25)),
+                };
+                DoubleAnimation VisibilityAnimation = new DoubleAnimation()
+                {
+                    //set the animation effect to not change
+                    From = (IsVisible) ? 1 : 1,
+                    To = (IsVisible) ? 1 : 1,
+                    Duration = TimeSpan.FromSeconds(0.2)
+                };
+                BeginAnimation(OpacityProperty, VisibilityAnimation);
+                BeginAnimation(Canvas.TopProperty, myDoubleAnimation);
+            }
+        }
+
         /// <summary>
         /// Animation
         /// </summary>
