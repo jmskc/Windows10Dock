@@ -49,7 +49,7 @@
             </UniformGrid>
         </Border>
         <Grid Name="LabelGrid" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Border Name="LabelBorder" CornerRadius="2" BorderThickness="6" BorderBrush="White">
+            <Border x:Name="LabelBorder" CornerRadius="2" BorderThickness="6" BorderBrush="White">
                 <TextBlock Background="White" Grid.Row="2" Name="TestTextBlock" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" MinWidth="60">
                 </TextBlock>
                 <Border.Effect>
@@ -59,7 +59,7 @@
         </Grid>
         <Grid Grid.Row="1">
             <Grid HorizontalAlignment="Center" Width="35" Margin="0,5,0,0">
-                <Polygon Name="Triangle" Points="20,0 10,10 30,10" Fill="{Binding Background, ElementName=MainGrid}" HorizontalAlignment="Center" Width="40" />
+                <Polygon x:Name="Triangle" Points="20,0 10,10 30,10" Fill="{Binding Background, ElementName=MainGrid}" HorizontalAlignment="Center" Width="40" />
             </Grid>
         </Grid>
 
