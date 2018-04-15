@@ -27,12 +27,20 @@
 
     <!--default grid for application deveolpment-->
 
-    <Grid Background="Transparent" Name="ParentGrid" AllowDrop="True" Style="{DynamicResource FocusVisual}" VerticalAlignment="Top" HorizontalAlignment="Center">
+    <Grid Background="Transparent" Name="ParentGrid" AllowDrop="True" Style="{DynamicResource FocusVisual}" VerticalAlignment="Top" HorizontalAlignment="Center" RenderTransformOrigin="0,0.5">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform ScaleY="1" ScaleX="1"/>
+                <SkewTransform AngleY="0" AngleX="0"/>
+                <RotateTransform Angle="0"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border Name="MainGridBorder" CornerRadius="0,0,5,5" BorderBrush="white" BorderThickness="6">
+        <Border Name="MainGridBorder" CornerRadius="0,0,5,5" BorderBrush="white" BorderThickness="6" HorizontalAlignment="Left">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20" Opacity="0.2"/>
             </Border.Effect>

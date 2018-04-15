@@ -25,7 +25,7 @@ namespace apptest1
         {
             InitializeComponent();
         }
-
+        
         private void FeaturesBackButton_Click(object sender, RoutedEventArgs e)
         {
             Settings settings = new Settings();
@@ -35,7 +35,7 @@ namespace apptest1
         private void Startup_Click(object sender, RoutedEventArgs e)
         {
             MediaPlayer mplayer = new MediaPlayer();
-            mplayer.Open(new Uri(@"C:\Users\Vespir\Desktop\apptest1\dickhole.mp3", UriKind.Relative));
+            mplayer.Open(new Uri(@"C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Startup.m4a", UriKind.Relative));
             mplayer.Play();
         }
         private void enable(object sender, RoutedEventArgs e)

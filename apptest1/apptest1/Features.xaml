@@ -16,8 +16,8 @@
         </Grid.ColumnDefinitions>
         <WrapPanel MinWidth="{Binding MinWidth, ElementName=grid}" MinHeight="{Binding MinHeight, ElementName=grid}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="182.8,240,100.8,232.8" Grid.Column="3"/>
         <Button x:Name="FeaturesBackButton" Content=" ←" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" BorderBrush="{x:Null}" Height="30" Click="FeaturesBackButton_Click" Grid.ColumnSpan="4"/>
-        <CheckBox Content="Launch at Startup" HorizontalAlignment="Left" Margin="13.8,73,0,0" VerticalAlignment="Top" Width="216" Checked="enable" Unchecked="disable" Grid.Column="2" Grid.ColumnSpan="2"/>
-        <TextBlock HorizontalAlignment="Left" Height="20" Margin="13.8,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273" Grid.Column="2" Grid.ColumnSpan="2"><Run FontWeight="Bold" Text="Enable Toolbar to commence at "/><Run FontWeight="Bold" Text="boot up"/><Run FontWeight="Bold" Text=":"/></TextBlock>
-        <Button x:Name="SoundStartup" Content="Help Startup" Grid.Column="3" HorizontalAlignment="Left" Margin="283.8,58,0,0" VerticalAlignment="Top" Width="90" Grid.ColumnSpan="2" Click="Startup_Click" Height="30"/>
+        <CheckBox Content="Launch at Startup" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Width="216" Checked="enable" Unchecked="disable" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273" Grid.Column="2" Grid.ColumnSpan="2"><Run FontWeight="Bold" Text="Enable Toolbar to commence during boot:"/></TextBlock>
+        <Button x:Name="SoundStartup" Content="Help Startup" Grid.Column="3" HorizontalAlignment="Left" Margin="264,110,0,0" VerticalAlignment="Top" Width="90" Click="Startup_Click" Height="30" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

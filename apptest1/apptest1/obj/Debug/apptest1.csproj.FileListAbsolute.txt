@@ -169,3 +169,35 @@ C:\Users\jmsko\OneDrive\College\apptest1\apptest1\bin\Debug\FreeImage-dotnet-cor
 C:\Users\jmsko\OneDrive\College\apptest1\apptest1\bin\Debug\DynamicImageHandler.dll.config
 C:\Users\jmsko\OneDrive\College\apptest1\apptest1\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Jan Sk\OneDrive\College\apptest1\apptest1\obj\Debug\App.baml
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\bin\Debug\apptest1.exe.config
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\bin\Debug\apptest1.exe.manifest
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\bin\Debug\apptest1.application
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\bin\Debug\apptest1.exe
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\bin\Debug\apptest1.pdb
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\bin\Debug\DynamicImageHandler.dll
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\bin\Debug\DynamicImageHandler.ImageTool.FreeImage.dll
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\bin\Debug\DynamicImageHandler.ImageTool.Wpf.dll
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\bin\Debug\FirstFloor.ModernUI.dll
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\bin\Debug\FreeImage-dotnet-core.dll
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\bin\Debug\FirstFloor.ModernUI.xml
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\apptest1.csprojResolveAssemblyReference.cache
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\Appearance.g.cs
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\Features.g.cs
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\MainWindow.g.cs
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\Settings.g.cs
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\App.g.cs
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\apptest1_MarkupCompile.cache
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\apptest1_MarkupCompile.lref
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\App.baml
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\Appearance.baml
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\Features.baml
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\MainWindow.baml
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\Settings.baml
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\apptest1.g.resources
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\apptest1.Properties.Resources.resources
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\apptest1.csproj.GenerateResource.Cache
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\apptest1.exe.manifest
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\apptest1.application
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\apptest1.exe
+C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\obj\Debug\apptest1.pdb

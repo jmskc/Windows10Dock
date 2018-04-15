@@ -122,6 +122,25 @@ namespace apptest1
         /// <summary>
         /// Sets theme color for the dock.
         /// </summary>
+        /// 
+        private void Startup_Click1(object sender, RoutedEventArgs e)
+        {
+            MediaPlayer mplayer = new MediaPlayer();
+            mplayer.Open(new Uri(@"C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Opacity.m4a", UriKind.Relative));
+            mplayer.Play();
+        }
+        private void Startup_Click2(object sender, RoutedEventArgs e)
+        {
+            MediaPlayer mplayer = new MediaPlayer();
+            mplayer.Open(new Uri(@"C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Theme.m4a", UriKind.Relative));
+            mplayer.Play();
+        }
+        private void Startup_Click3(object sender, RoutedEventArgs e)
+        {
+            MediaPlayer mplayer = new MediaPlayer();
+            mplayer.Open(new Uri(@"C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Size.m4a", UriKind.Relative));
+            mplayer.Play();
+        }
         private void ThemeColor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DropShadowEffect dropShadowEffect = new DropShadowEffect();
@@ -156,6 +175,7 @@ namespace apptest1
                 mainWin.MainGridBorder.Effect = dropShadowEffect;
             }
             Properties.Settings.Default.Save();
+
         }
     }
 }
