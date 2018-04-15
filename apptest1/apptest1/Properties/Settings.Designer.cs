@@ -58,5 +58,16 @@ namespace apptest1.Properties {
                 this["ThemeColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection ShortcutList {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["ShortcutList"]));
+            }
+            set {
+                this["ShortcutList"] = value;
+            }
+        }
     }
 }

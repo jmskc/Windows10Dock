@@ -18,6 +18,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Interop;
 using DynamicImageHandler;
 using System.Windows.Media.Effects;
+using System.Collections.Specialized;
+using System.Xml;
 
 namespace apptest1
 {
@@ -27,8 +29,9 @@ namespace apptest1
     public partial class MainWindow : Window
     {
         private Appearance appearance = Application.Current.Windows.Cast<Appearance>().FirstOrDefault(window => window is Appearance) as Appearance;   //  Main Window
-        List<Models.ShortcutModel> ShortcutList = new List<Models.ShortcutModel>();
+        List<string> ShortcutList = new List<string>();
         DropShadowEffect dropShadow = new DropShadowEffect();
+        StringCollection collection = new StringCollection();
 
         private byte ThemeColorValue;   // RGB color of the window.
         string[] fileButton1;
@@ -50,6 +53,12 @@ namespace apptest1
 
             InitializeSettingsButton();
             InitializeExitButton();
+            collection.Remove("System.Windows.Controls");
+            foreach (string item in Properties.Settings.Default.ShortcutList)
+            {
+                string x = @item;
+                new_icon(x);
+            }
 
             ThemeColorValue = Convert.ToByte(Properties.Settings.Default.ThemeColor);
 
@@ -138,9 +147,29 @@ namespace apptest1
 
             image.Source = ExitShortcut.BitmapSource;
 
-            ShortcutList.Add(ExitShortcut); //  Store shortcut in global List for later re-use.
             ExitButton.Content = image; //  Add image to the button
-            ExitButton.Click += (s, f) => { Environment.Exit(0); };   // Button click event
+            ExitButton.Click += (s, f) => {
+                //foreach (Button item in MainGrid.Children)
+                //{
+                //    if (item == MainGrid.Children[0] || item == MainGrid.Children[1])
+                //    {
+
+                //    }
+                //    else
+                //    {
+                //        collection.Add(item.)
+                //    }
+                //    //  Store shortcut in global List for later re-use.
+                //    Resources.Add(val, item);
+                //    //collection.Add(item.ToString());
+                //    val++;
+                //}
+                //Properties.Settings.Default.ShortcutList = collection;
+                //Properties.Settings.Default.Save();
+                Properties.Settings.Default.ShortcutList = collection;
+                Properties.Settings.Default.Save();
+                Environment.Exit(0);
+            };   // Button click event
         }
 
         /// <summary>
@@ -161,7 +190,6 @@ namespace apptest1
 
             SettingsButton.MouseEnter += (s, f) => { TestTextBlock.Text = SettingsShortcut.Name; };
 
-            ShortcutList.Add(SettingsShortcut); //  Store shortcut in global List for later re-use. 
             button.Content = image; //  Add image to the button
             button.Click += (s, f) => { Settings Settings = new Settings(); Settings.Show(); };   // Button click event
         }
@@ -551,10 +579,10 @@ namespace apptest1
                 }
             }
             MainGrid.Columns += 1;
-            ShortcutList.Add(shortcut); //  Store shortcut in global List for later re-use.
             MainGrid.Children.Add(button);   // Add button at the end of Items Control in Main Window
             button.Content = image; //  Add image to the button
             button.Click += (s, f) => { Process.Start(shortcut.FileButton.ElementAt(0)); };   // Button click event
+            collection.Add(shortcut.Path);
             ContextMenu contextMenu = new ContextMenu();
             button.ContextMenu = contextMenu;
             button.ToolTip = shortcut.Name;
@@ -563,6 +591,7 @@ namespace apptest1
             DeleteItem.Header = "Delete";
             button.ContextMenu.Items.Clear();
             DeleteItem.Click += (s, f) => {
+                                            collection.Remove(shortcut.Path);
                                             MainGrid.Children.Remove(button);
                                             MainGrid.Columns -= 1;
                                             MainGrid.Width = MainGrid.Children.Count * Properties.Settings.Default.IconSize;
@@ -582,8 +611,75 @@ namespace apptest1
             this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
 
         }
+
+        private void new_icon(string path)
+        {
+
+            Models.ShortcutModel shortcut = new Models.ShortcutModel();
+            Button button = new Button();
+            Image image = new Image();
+
+            shortcut.ID = ShortcutList.Count;
+
+                shortcut.Path = path;
+
+                shortcut.Name = System.IO.Path.GetFileNameWithoutExtension(shortcut.Path);
+
+                try
+                {
+                    shortcut.BitmapSource = Imaging.CreateBitmapSourceFromHIcon(
+                                            ShellEx.GetBitmapFromFilePath(shortcut.Path, ShellEx.IconSizeEnum.ExtraLargeIcon).GetHicon(),
+                                            Int32Rect.Empty,
+                                            BitmapSizeOptions.FromEmptyOptions());
+
+                    image.Source = shortcut.BitmapSource;
+                    button.Content = shortcut.FileButton;
+
+                }
+
+                catch (FileNotFoundException)
+                {
+                    image.Source = new BitmapImage(new Uri("/Icons/FolderIcon.ico", UriKind.Relative));
+                }
+
+            MainGrid.Columns += 1;
+            MainGrid.Children.Add(button);   // Add button at the end of Items Control in Main Window
+            button.Content = image; //  Add image to the button
+            button.Click += (s, f) => { Process.Start(shortcut.Path); };   // Button click event
+            collection.Add(shortcut.Path);
+            ContextMenu contextMenu = new ContextMenu();
+            button.ContextMenu = contextMenu;
+            button.ToolTip = shortcut.Name;
+            // Re used Ryan's deletion code for this purpouse + Remove button from Item Control + resize window
+            MenuItem DeleteItem = new MenuItem();
+            DeleteItem.Header = "Delete";
+            button.ContextMenu.Items.Clear();
+            DeleteItem.Click += (s, f) => {
+                collection.Remove(shortcut.Path);
+                MainGrid.Children.Remove(button);
+                MainGrid.Columns -= 1;
+                MainGrid.Width = MainGrid.Children.Count * Properties.Settings.Default.IconSize;
+                this.Width = this.MainGrid.Children.Count * Properties.Settings.Default.IconSize + 50;
+                halfWidth = this.Width / 2;
+                this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
+            };
+            button.MouseEnter += (s, f) => { TestTextBlock.Text = shortcut.Name; };
+
+            button.ContextMenu.Items.Add(DeleteItem);
+
+
+            // Update Sizing and Positioning
+            MainGrid.Width = MainGrid.Children.Count * Properties.Settings.Default.IconSize;
+            this.Width = this.MainGrid.Children.Count * Properties.Settings.Default.IconSize + 50;
+            halfWidth = this.Width / 2;
+            this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
+
+        }
     }
 }
+
+
+
 
 //https://www.codeproject.com/Questions/514592/DragplusandplusdropplusWPFplusC-plusgettingplusf
 
