@@ -35,7 +35,7 @@ namespace apptest1
         private void Startup_Click(object sender, RoutedEventArgs e)
         {
             MediaPlayer mplayer = new MediaPlayer();
-            mplayer.Open(new Uri(@"C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Startup.m4a", UriKind.Relative));
+            mplayer.Open(new Uri(@"C:\Users\jmsko\OneDrive\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Startup.m4a", UriKind.Relative));
             mplayer.Play();
         }
         private void enable(object sender, RoutedEventArgs e)

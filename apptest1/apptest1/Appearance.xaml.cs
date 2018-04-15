@@ -126,19 +126,19 @@ namespace apptest1
         private void Startup_Click1(object sender, RoutedEventArgs e)
         {
             MediaPlayer mplayer = new MediaPlayer();
-            mplayer.Open(new Uri(@"C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Opacity.m4a", UriKind.Relative));
+            mplayer.Open(new Uri(@"C:\Users\jmsko\OneDrive\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Opacity.m4a", UriKind.Relative));
             mplayer.Play();
         }
         private void Startup_Click2(object sender, RoutedEventArgs e)
         {
             MediaPlayer mplayer = new MediaPlayer();
-            mplayer.Open(new Uri(@"C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Theme.m4a", UriKind.Relative));
+            mplayer.Open(new Uri(@"C:\Users\jmsko\OneDrive\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Theme.m4a", UriKind.Relative));
             mplayer.Play();
         }
         private void Startup_Click3(object sender, RoutedEventArgs e)
         {
             MediaPlayer mplayer = new MediaPlayer();
-            mplayer.Open(new Uri(@"C:\Users\Pussy Cake\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Size.m4a", UriKind.Relative));
+            mplayer.Open(new Uri(@"C:\Users\jmsko\OneDrive\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Size.m4a", UriKind.Relative));
             mplayer.Play();
         }
         private void ThemeColor_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -176,6 +176,13 @@ namespace apptest1
             }
             Properties.Settings.Default.Save();
 
+        }
+
+        private void SoundStartup_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            MediaPlayer mplayer = new MediaPlayer();
+            mplayer.Open(new Uri(@"\SoundClips\Opacity.m4a", UriKind.Relative));
+            mplayer.Play();
         }
     }
 }
