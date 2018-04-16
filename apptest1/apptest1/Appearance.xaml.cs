@@ -172,5 +172,23 @@ namespace apptest1
             }
             Properties.Settings.Default.Save();
         }
+        private void OpacityVoiceover(object sender, RoutedEventArgs e)
+        {
+            MediaPlayer mplayer = new MediaPlayer();
+            mplayer.Open(new Uri(@"C:\Users\jmsko\OneDrive\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Opacity.m4a", UriKind.Relative));
+            mplayer.Play();
+        }
+        private void ThemeVoiceover(object sender, RoutedEventArgs e)
+        {
+            MediaPlayer mplayer = new MediaPlayer();
+            mplayer.Open(new Uri(@"C:\Users\jmsko\OneDrive\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Theme.m4a", UriKind.Relative));
+            mplayer.Play();
+        }
+        private void SizeVoiceover(object sender, RoutedEventArgs e)
+        {
+            MediaPlayer mplayer = new MediaPlayer();
+            mplayer.Open(new Uri(@"C:\Users\jmsko\OneDrive\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Size.m4a", UriKind.Relative));
+            mplayer.Play();
+        }
     }
 }

@@ -35,7 +35,7 @@
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border Name="MainGridBorder" CornerRadius="0,0,5,5" BorderBrush="white" BorderThickness="6">
+        <Border Name="MainGridBorder" CornerRadius="0,0,5,5" BorderBrush="white" BorderThickness="6"  SnapsToDevicePixels="True" UseLayoutRounding="True" >
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20" Opacity="0.2"/>
             </Border.Effect>
@@ -48,7 +48,7 @@
                 </Button>
             </UniformGrid>
         </Border>
-        <Grid Name="LabelGrid" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid Name="LabelGrid" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"  SnapsToDevicePixels="True" UseLayoutRounding="True" >
             <Border x:Name="LabelBorder" CornerRadius="2" BorderThickness="6" BorderBrush="White">
                 <TextBlock Background="White" Grid.Row="2" Name="TestTextBlock" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" MinWidth="60">
                 </TextBlock>
@@ -57,8 +57,8 @@
                 </Border.Effect>
             </Border>
         </Grid>
-        <Grid Grid.Row="1">
-            <Grid HorizontalAlignment="Center" Width="35" Margin="0,5,0,0">
+        <Grid Grid.Row="1"  SnapsToDevicePixels="True" UseLayoutRounding="True" >
+            <Grid HorizontalAlignment="Center" Width="35" Margin="0,5,0,0 ">
                 <Polygon x:Name="Triangle" Points="20,0 10,10 30,10" Fill="{Binding Background, ElementName=MainGrid}" HorizontalAlignment="Center" Width="40" />
             </Grid>
         </Grid>
