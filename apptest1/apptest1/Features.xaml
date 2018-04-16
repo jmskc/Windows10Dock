@@ -5,11 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:apptest1"
         mc:Ignorable="d"
-        Title="Features" Height="330" Width="330">
+        Title="Features" MinHeight="400" MinWidth="400">
     <Grid>
-        <WrapPanel MinWidth="{Binding MinWidth, ElementName=grid}" MinHeight="{Binding MinHeight, ElementName=grid}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="21,26,21,19"/>
-        <Button x:Name="FeaturesBackButton" Content=" ←" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" BorderBrush="{x:Null}" Height="30" Click="FeaturesBackButton_Click"/>
-        <Button x:Name="button" Content="Launch at Startup" HorizontalAlignment="Left" Margin="90,130,0,0" VerticalAlignment="Top" Width="124" Click="button_click"/>
-        <Button x:Name="button1" Content="Disable Launch at Startup" HorizontalAlignment="Left" Margin="81,190,0,0" VerticalAlignment="Top" Width="140" Click="button_click1"/>
+        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid x:Name="Appereance_Button" HorizontalAlignment="Center" Height="150" VerticalAlignment="Top" Width="250" AutomationProperties.ItemType="SettingsBlock" Margin="25,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="Startup" VerticalAlignment="Center" FontSize="14" HorizontalAlignment="Left" MouseEnter="StartupVoiceover"/>
+                <CheckBox Grid.Row="1" Checked="enable" Unchecked="disable" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="2" x:Name="StartupValue" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="#BF000000" Text="Enable Toolbar to commence during boot" HorizontalAlignment="Center"/>
+            </Grid>
+        </WrapPanel>
+        <Button x:Name="FeaturesBackButton" Content=" ←" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" BorderBrush="{x:Null}" Height="30" Click="FeaturesBackButton_Click" Grid.ColumnSpan="4"/>
     </Grid>
 </Window>
