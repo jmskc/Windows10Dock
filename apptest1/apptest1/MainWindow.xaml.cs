@@ -54,7 +54,9 @@ namespace apptest1
             InitializeSettingsButton();
             InitializeExitButton();
             collection.Remove("System.Windows.Controls");
-            if (Properties.Settings.Default.ShortcutList.Count > 0)
+            //tried to implement a fix using and if statement, if the shortcultList is null, for example when the application is 
+            //first run, then skip this step, otherwise add items to the list, needs more testing, if this doesnt work use a try/catch?
+            if (Properties.Settings.Default.ShortcutList != null)
             {
                 foreach (string item in Properties.Settings.Default.ShortcutList)
                 {
