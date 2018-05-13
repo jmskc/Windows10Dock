@@ -54,10 +54,13 @@ namespace apptest1
             InitializeSettingsButton();
             InitializeExitButton();
             collection.Remove("System.Windows.Controls");
-            foreach (string item in Properties.Settings.Default.ShortcutList)
+            if (Properties.Settings.Default.ShortcutList.Count > 0)
             {
-                string x = @item;
-                new_icon(x);
+                foreach (string item in Properties.Settings.Default.ShortcutList)
+                {
+                    string x = @item;
+                    new_icon(x);
+                }
             }
 
             ThemeColorValue = Convert.ToByte(Properties.Settings.Default.ThemeColor);
