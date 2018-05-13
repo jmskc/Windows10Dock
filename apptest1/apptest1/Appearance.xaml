@@ -6,32 +6,61 @@
         xmlns:local="clr-namespace:apptest1"
         xmlns:Properties="clr-namespace:apptest1.Properties" x:Name="Appearance1" x:Class="apptest1.Appearance"
         mc:Ignorable="d"
-        Title="Appearance" Width="772">
-    <Grid>
-        <WrapPanel MinWidth="{Binding MinWidth, ElementName=grid}" MinHeight="{Binding MinHeight, ElementName=grid}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="21,26,21,19">
-            <Grid x:Name="Appereance_Button" HorizontalAlignment="Center" Height="100" VerticalAlignment="Top" Width="250" Cursor="Hand" AutomationProperties.ItemType="SettingsBlock">
-                <TextBlock TextWrapping="Wrap" Text="Icon Size" VerticalAlignment="Bottom" Margin="0,0,0,81" FontSize="14"/>
-                <TextBlock x:Name="IconSizeValue" TextWrapping="Wrap" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="#BF000000" Margin="0,0,0,10" Text="48px"/>
-                <Slider x:Name="IconSizeSlider" Margin="10,34,10,0" VerticalAlignment="Top" Background="{x:Null}" ValueChanged="IconSizeSlider_ValueChanged" Value="{Binding IconSize}" >
-                    <Slider.DataContext>
-                        <Properties:Settings/>
-                    </Slider.DataContext>
-                </Slider>
+        Title="Appearance" MinWidth="400" MinHeight="400">
+    <ScrollViewer>
+        <Grid Margin="25">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid x:Name="Appereance_Button" HorizontalAlignment="Center" Height="150" VerticalAlignment="Top" Width="250" AutomationProperties.ItemType="SettingsBlock" Margin="25,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="Icon Size" VerticalAlignment="Center" FontSize="14" HorizontalAlignment="Left"  MouseEnter="SizeVoiceover"/>
+                        <TextBlock Grid.Row="2" x:Name="IconSizeValue" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="#BF000000" Text="48px" HorizontalAlignment="Center"/>
+                        <Slider Grid.Row="1" x:Name="IconSizeSlider" VerticalAlignment="Center" Background="{x:Null}" ValueChanged="IconSizeSlider_ValueChanged" Value="{Binding IconSize}" >
+                            <Slider.DataContext>
+                                <Properties:Settings/>
+                            </Slider.DataContext>
+                        </Slider>
+                    </Grid>
+                    <Grid x:Name="Features_Button" HorizontalAlignment="Center" Height="150" VerticalAlignment="Top" Width="250" AutomationProperties.ItemType="SettingsBlock" Margin="25,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="Opacity" VerticalAlignment="Center" FontSize="14" MouseEnter="OpacityVoiceover"/>
+                        <TextBlock Grid.Row="2" x:Name="OpacityValue" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="#BF000000" Text="0%" HorizontalAlignment="Center"/>
+                        <Slider Grid.Row="1" x:Name="OpacitySlider" VerticalAlignment="Center" Background="{x:Null}" ValueChanged="OpacitySlider_ValueChanged" Maximum="255"/>
+                    </Grid>
+                    <Grid x:Name="Appereance_Button_Copy" HorizontalAlignment="Center" Height="150" VerticalAlignment="Top" Width="250" AutomationProperties.ItemType="SettingsBlock" Margin="25,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="Theme Color" VerticalAlignment="Center" FontSize="14" MouseEnter="ThemeVoiceover"/>
+                        <TextBlock Grid.Row="2" x:Name="IconSizeValue1" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="#BF000000" Text="Choose from dropdown menu" HorizontalAlignment="Center"/>
+                        <ComboBox Grid.Row="1" x:Name="ThemeColor" VerticalAlignment="Center" SelectionChanged="ThemeColor_SelectionChanged">
+                            <ComboBoxItem x:Name="ThemeColorLight" Content="Light"/>
+                            <ComboBoxItem x:Name="ThemeColorDark" Content="Dark"/>
+                        </ComboBox>
+                    </Grid>
+                </WrapPanel>
             </Grid>
-            <Grid x:Name="Features_Button" HorizontalAlignment="Center" Height="100" VerticalAlignment="Top" Width="250" Cursor="Hand" AutomationProperties.ItemType="SettingsBlock">
-                <TextBlock TextWrapping="Wrap" Text="Opacity" VerticalAlignment="Bottom" Margin="0,0,0,81" FontSize="14"/>
-                <TextBlock x:Name="OpacityValue" TextWrapping="Wrap" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="#BF000000" Margin="0,0,0,10" Text="0%"/>
-                <Slider x:Name="OpacitySlider" Margin="10,34,10,0" VerticalAlignment="Top" Background="{x:Null}" ValueChanged="OpacitySlider_ValueChanged" Maximum="255"/>
-            </Grid>
-            <Grid x:Name="Appereance_Button_Copy" HorizontalAlignment="Center" Height="100" VerticalAlignment="Top" Width="250" Cursor="Hand" AutomationProperties.ItemType="SettingsBlock">
-                <TextBlock TextWrapping="Wrap" Text="Theme Color" VerticalAlignment="Bottom" Margin="0,0,0,81" FontSize="14"/>
-                <TextBlock x:Name="IconSizeValue1" TextWrapping="Wrap" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="#BF000000" Margin="0,0,0,10" Text="Choose from dropdown menu"/>
-                <ComboBox x:Name="ThemeColor" Margin="10,36,10,0" VerticalAlignment="Top" SelectionChanged="ThemeColor_SelectionChanged">
-                    <ComboBoxItem x:Name="ThemeColorLight" Content="Light"/>
-                    <ComboBoxItem x:Name="ThemeColorDark" Content="Dark"/>
-                </ComboBox>
-            </Grid>
-        </WrapPanel>
-        <Button x:Name="AppearanceBackButton" Content=" ←" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" BorderBrush="{x:Null}" Height="30" Click="AppearanceBackButton_Click"/>
-    </Grid>
+            <Button x:Name="AppearanceBackButton" Content="←    Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" BorderBrush="{x:Null}" Height="30" Click="AppearanceBackButton_Click" FontSize="16"/>
+        </Grid>
+    </ScrollViewer>
+
 </Window>

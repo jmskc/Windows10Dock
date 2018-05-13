@@ -18,6 +18,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Interop;
 using DynamicImageHandler;
 using System.Windows.Media.Effects;
+using System.Collections.Specialized;
+using System.Xml;
 
 namespace apptest1
 {
@@ -27,8 +29,9 @@ namespace apptest1
     public partial class MainWindow : Window
     {
         private Appearance appearance = Application.Current.Windows.Cast<Appearance>().FirstOrDefault(window => window is Appearance) as Appearance;   //  Main Window
-        List<Models.ShortcutModel> ShortcutList = new List<Models.ShortcutModel>();
+        List<string> ShortcutList = new List<string>();
         DropShadowEffect dropShadow = new DropShadowEffect();
+        StringCollection collection = new StringCollection();
 
         private byte ThemeColorValue;   // RGB color of the window.
         string[] fileButton1;
@@ -50,6 +53,12 @@ namespace apptest1
 
             InitializeSettingsButton();
             InitializeExitButton();
+            collection.Remove("System.Windows.Controls");
+            foreach (string item in Properties.Settings.Default.ShortcutList)
+            {
+                string x = @item;
+                new_icon(x);
+            }
 
             ThemeColorValue = Convert.ToByte(Properties.Settings.Default.ThemeColor);
 
@@ -58,11 +67,17 @@ namespace apptest1
             this.Width = this.MainGrid.Children.Count * Properties.Settings.Default.IconSize+50;
 
             // PROPERTIES
-            MainGrid.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(Properties.Settings.Default.Opacity), ThemeColorValue, ThemeColorValue, ThemeColorValue));
-            MainGridBorder.BorderBrush = MainGrid.Background;
-            SettingsButton.Height = Properties.Settings.Default.IconSize;
 
             InitializeDropShadowEffect();
+            LabelBorder.Visibility = Visibility.Hidden;
+            Triangle.Visibility = Visibility.Hidden;
+            MainGrid.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(Properties.Settings.Default.Opacity), ThemeColorValue, ThemeColorValue, ThemeColorValue));
+
+            // Label
+            MainGridBorder.BorderBrush = MainGrid.Background;
+            LabelBorder.BorderBrush = MainGrid.Background;
+            TestTextBlock.Background = MainGrid.Background;
+            SettingsButton.Height = Properties.Settings.Default.IconSize;
 
             // POSITION
             //can probably move this into a method/class just returning the variables?
@@ -79,12 +94,14 @@ namespace apptest1
             Color color = new Color();
             if (Properties.Settings.Default.ThemeColor == 255)
             {
+                
                 dropShadow.Opacity = 0.2;
                 dropShadow.BlurRadius = 20;
                 color.ScB = 0;
                 color.ScG = 0;
                 color.ScR = 0;
                 dropShadow.Color = color;
+                TestTextBlock.Foreground = Brushes.Black;
             }
             else if(Properties.Settings.Default.ThemeColor == 0)
             {
@@ -94,6 +111,7 @@ namespace apptest1
                 color.ScG = 0;
                 color.ScR = 0;
                 dropShadow.Color = color;
+                TestTextBlock.Foreground = Brushes.White;
             }
             MainGridBorder.Effect = dropShadow;
         }
@@ -125,14 +143,33 @@ namespace apptest1
 
             ExitShortcut.Name = "Exit";
 
-            button.MouseEnter += (s, f) => { TestTextBlock.Text = ExitShortcut.Name; };
+            ExitButton.MouseEnter += (s, f) => { TestTextBlock.Text = ExitShortcut.Name; };
 
             image.Source = ExitShortcut.BitmapSource;
 
-            ShortcutList.Add(ExitShortcut); //  Store shortcut in global List for later re-use.
-            MainGrid.Children.Add(button);   // Add button at the end of Items Control in Main Window
-            button.Content = image; //  Add image to the button
-            button.Click += (s, f) => { Environment.Exit(0); };   // Button click event
+            ExitButton.Content = image; //  Add image to the button
+            ExitButton.Click += (s, f) => {
+                //foreach (Button item in MainGrid.Children)
+                //{
+                //    if (item == MainGrid.Children[0] || item == MainGrid.Children[1])
+                //    {
+
+                //    }
+                //    else
+                //    {
+                //        collection.Add(item.)
+                //    }
+                //    //  Store shortcut in global List for later re-use.
+                //    Resources.Add(val, item);
+                //    //collection.Add(item.ToString());
+                //    val++;
+                //}
+                //Properties.Settings.Default.ShortcutList = collection;
+                //Properties.Settings.Default.Save();
+                Properties.Settings.Default.ShortcutList = collection;
+                Properties.Settings.Default.Save();
+                Environment.Exit(0);
+            };   // Button click event
         }
 
         /// <summary>
@@ -153,7 +190,6 @@ namespace apptest1
 
             SettingsButton.MouseEnter += (s, f) => { TestTextBlock.Text = SettingsShortcut.Name; };
 
-            ShortcutList.Add(SettingsShortcut); //  Store shortcut in global List for later re-use. 
             button.Content = image; //  Add image to the button
             button.Click += (s, f) => { Settings Settings = new Settings(); Settings.Show(); };   // Button click event
         }
@@ -401,6 +437,8 @@ namespace apptest1
         private void Mouse_Enter_Event(object sender, RoutedEventArgs e)
         {
             TestTextBlock.Visibility = Visibility.Visible;
+            Triangle.Visibility = Visibility.Visible;
+            LabelBorder.Visibility = Visibility.Visible;
 
             if (IsWindowOpen<Settings>("Settings1") || IsWindowOpen<Appearance>("Appearance1"))
             {
@@ -410,7 +448,7 @@ namespace apptest1
             {
                 DoubleAnimation myDoubleAnimation = new DoubleAnimation
                 {
-                    From = 0 - MainGrid.Height + 1,
+                    From = 0 - MainGrid.Height + 1 - MainGridBorder.BorderThickness.Bottom,
                     To = 0,
                     Duration = new Duration(TimeSpan.FromSeconds(0.25)),
                 };
@@ -425,12 +463,47 @@ namespace apptest1
             }
         }
 
+        //this method fixes the dock to open status when a drag enter or drag leave event occurs
+        //effectively allowing the user to drag between the background and the buttons without the dock flipping open and closed
+        private void Drag_Stop_Event(object sender, DragEventArgs e)
+        {
+            TestTextBlock.Visibility = Visibility.Visible;
+            Triangle.Visibility = Visibility.Visible;
+            LabelBorder.Visibility = Visibility.Visible;
+
+            if (IsWindowOpen<Settings>("Settings1") || IsWindowOpen<Appearance>("Appearance1"))
+            {
+
+            }
+            else
+            {
+                DoubleAnimation myDoubleAnimation = new DoubleAnimation
+                {
+                    //srt the values to not change
+                    From = 0 ,
+                    To = 0 ,
+                    Duration = new Duration(TimeSpan.FromSeconds(0.25)),
+                };
+                DoubleAnimation VisibilityAnimation = new DoubleAnimation()
+                {
+                    //set the animation effect to not change
+                    From = (IsVisible) ? 1 : 1,
+                    To = (IsVisible) ? 1 : 1,
+                    Duration = TimeSpan.FromSeconds(0.2)
+                };
+                BeginAnimation(OpacityProperty, VisibilityAnimation);
+                BeginAnimation(Canvas.TopProperty, myDoubleAnimation);
+            }
+        }
+
         /// <summary>
         /// Animation
         /// </summary>
         private void Mouse_Leave_Event(object sender, RoutedEventArgs e)
         {
             TestTextBlock.Visibility = Visibility.Hidden;
+            Triangle.Visibility = Visibility.Hidden;
+            LabelBorder.Visibility = Visibility.Hidden;
 
             if (IsWindowOpen<Settings>("Settings1") || IsWindowOpen<Appearance>("Appearance1"))
             {
@@ -441,7 +514,7 @@ namespace apptest1
                 DoubleAnimation myDoubleAnimation = new DoubleAnimation
                 {
                     From = 1,
-                    To = 0 - MainGrid.Height + 1,
+                    To = 0 - MainGrid.Height + 1 - MainGridBorder.BorderThickness.Bottom*2,
                     Duration = new Duration(TimeSpan.FromSeconds(0.25)),
 
                 };
@@ -506,10 +579,10 @@ namespace apptest1
                 }
             }
             MainGrid.Columns += 1;
-            ShortcutList.Add(shortcut); //  Store shortcut in global List for later re-use.
             MainGrid.Children.Add(button);   // Add button at the end of Items Control in Main Window
             button.Content = image; //  Add image to the button
             button.Click += (s, f) => { Process.Start(shortcut.FileButton.ElementAt(0)); };   // Button click event
+            collection.Add(shortcut.Path);
             ContextMenu contextMenu = new ContextMenu();
             button.ContextMenu = contextMenu;
             button.ToolTip = shortcut.Name;
@@ -518,6 +591,7 @@ namespace apptest1
             DeleteItem.Header = "Delete";
             button.ContextMenu.Items.Clear();
             DeleteItem.Click += (s, f) => {
+                                            collection.Remove(shortcut.Path);
                                             MainGrid.Children.Remove(button);
                                             MainGrid.Columns -= 1;
                                             MainGrid.Width = MainGrid.Children.Count * Properties.Settings.Default.IconSize;
@@ -537,8 +611,75 @@ namespace apptest1
             this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
 
         }
+
+        private void new_icon(string path)
+        {
+
+            Models.ShortcutModel shortcut = new Models.ShortcutModel();
+            Button button = new Button();
+            Image image = new Image();
+
+            shortcut.ID = ShortcutList.Count;
+
+                shortcut.Path = path;
+
+                shortcut.Name = System.IO.Path.GetFileNameWithoutExtension(shortcut.Path);
+
+                try
+                {
+                    shortcut.BitmapSource = Imaging.CreateBitmapSourceFromHIcon(
+                                            ShellEx.GetBitmapFromFilePath(shortcut.Path, ShellEx.IconSizeEnum.ExtraLargeIcon).GetHicon(),
+                                            Int32Rect.Empty,
+                                            BitmapSizeOptions.FromEmptyOptions());
+
+                    image.Source = shortcut.BitmapSource;
+                    button.Content = shortcut.FileButton;
+
+                }
+
+                catch (FileNotFoundException)
+                {
+                    image.Source = new BitmapImage(new Uri("/Icons/FolderIcon.ico", UriKind.Relative));
+                }
+
+            MainGrid.Columns += 1;
+            MainGrid.Children.Add(button);   // Add button at the end of Items Control in Main Window
+            button.Content = image; //  Add image to the button
+            button.Click += (s, f) => { Process.Start(shortcut.Path); };   // Button click event
+            collection.Add(shortcut.Path);
+            ContextMenu contextMenu = new ContextMenu();
+            button.ContextMenu = contextMenu;
+            button.ToolTip = shortcut.Name;
+            // Re used Ryan's deletion code for this purpouse + Remove button from Item Control + resize window
+            MenuItem DeleteItem = new MenuItem();
+            DeleteItem.Header = "Delete";
+            button.ContextMenu.Items.Clear();
+            DeleteItem.Click += (s, f) => {
+                collection.Remove(shortcut.Path);
+                MainGrid.Children.Remove(button);
+                MainGrid.Columns -= 1;
+                MainGrid.Width = MainGrid.Children.Count * Properties.Settings.Default.IconSize;
+                this.Width = this.MainGrid.Children.Count * Properties.Settings.Default.IconSize + 50;
+                halfWidth = this.Width / 2;
+                this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
+            };
+            button.MouseEnter += (s, f) => { TestTextBlock.Text = shortcut.Name; };
+
+            button.ContextMenu.Items.Add(DeleteItem);
+
+
+            // Update Sizing and Positioning
+            MainGrid.Width = MainGrid.Children.Count * Properties.Settings.Default.IconSize;
+            this.Width = this.MainGrid.Children.Count * Properties.Settings.Default.IconSize + 50;
+            halfWidth = this.Width / 2;
+            this.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
+
+        }
     }
 }
+
+
+
 
 //https://www.codeproject.com/Questions/514592/DragplusandplusdropplusWPFplusC-plusgettingplusf
 

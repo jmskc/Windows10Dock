@@ -5,19 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:apptest1"
         mc:Ignorable="d"
-        Title="Settings">
-    <Grid x:Name="grid" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <WrapPanel MinWidth="{Binding MinWidth, ElementName=grid}" MinHeight="{Binding MinHeight, ElementName=grid}" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Grid x:Name="Appereance_Button" HorizontalAlignment="Center" Height="125" Margin="30,30,0,0" VerticalAlignment="Top" Width="125" AutomationProperties.ItemType="SettingsBlock" MouseEnter="Appereance_Button_MouseEnter" MouseLeave="Appereance_Button_MouseLeave" MouseUp="Appereance_Button_MouseUp">
-                <Image HorizontalAlignment="Center" VerticalAlignment="Top" Width="48" Source="Icons/appearance.ico" Height="46" Margin="39,10,38,0"/>
-                <TextBlock TextWrapping="Wrap" Text="Appearance" VerticalAlignment="Bottom" Margin="0,0,0,45" TextAlignment="Center" FontSize="14"/>
-                <TextBlock TextWrapping="Wrap" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="#BF000000" Margin="0,0,0,10"><Run Text="Icon size, opacity, themes"/><Run Text=" ..."/></TextBlock>
+    Title="Settings" MinWidth="400" MinHeight="400">
+    <ScrollViewer>
+        <Grid Margin="25">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid x:Name="Appereance_Button" HorizontalAlignment="Center" VerticalAlignment="Center" Width="175" AutomationProperties.ItemType="SettingsBlock" MouseEnter="Appereance_Button_MouseEnter" MouseLeave="Appereance_Button_MouseLeave" MouseUp="Appereance_Button_MouseUp" Height="150">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" Source="Icons/appearance.ico" HorizontalAlignment="Center" VerticalAlignment="Center" Width="64"/>
+                        <TextBlock Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="#BF000000" HorizontalAlignment="Center"><Run Text="Icon size, opacity, themes"/><Run Text=" ..."/></TextBlock>
+                        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Appearance" VerticalAlignment="Center" TextAlignment="Center" FontSize="14" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Features_Button" HorizontalAlignment="Center" VerticalAlignment="Top" AutomationProperties.ItemType="SettingsBlock" MouseEnter="Features_Button_MouseEnter" MouseLeave="Features_Button_MouseLeave" MouseUp="Features_Button_MouseUp" Height="150" Width="175">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="64" Source="Icons/Features.ico"/>
+                        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Features" VerticalAlignment="Center" TextAlignment="Center" FontSize="14" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="#BF000000" HorizontalAlignment="Center"><Run Text="Voiceover, labels, startup "/><Run Text="..."/></TextBlock>
+                    </Grid>
+                </WrapPanel>
             </Grid>
-            <Grid x:Name="Features_Button" HorizontalAlignment="Center" Height="125" Margin="30,30,0,0" VerticalAlignment="Top" Width="125" AutomationProperties.ItemType="SettingsBlock" MouseEnter="Features_Button_MouseEnter" MouseLeave="Features_Button_MouseLeave" MouseUp="Features_Button_MouseUp">
-                <Image HorizontalAlignment="Center" VerticalAlignment="Top" Width="48" Source="Icons/Features.ico" Height="46" Margin="39,10,38,0"/>
-                <TextBlock TextWrapping="Wrap" Text="Features" VerticalAlignment="Bottom" Margin="0,0,0,45" TextAlignment="Center" FontSize="14"/>
-                <TextBlock TextWrapping="Wrap" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="#BF000000" Margin="0,0,0,10"><Run Text="Voiceover, labels, startup "/><Run Text="..."/></TextBlock>
-            </Grid>
-        </WrapPanel>
-    </Grid>
+
+        </Grid>
+    </ScrollViewer>
 </Window>

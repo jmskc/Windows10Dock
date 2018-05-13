@@ -11,5 +11,8 @@
     <Setting Name="ThemeColor" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">255</Value>
     </Setting>
+    <Setting Name="ShortcutList" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

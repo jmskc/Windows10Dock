@@ -22,7 +22,8 @@ namespace apptest1
     {
         private MainWindow mainWin = Application.Current.Windows.Cast<Window>().FirstOrDefault(window => window is MainWindow) as MainWindow;   //  Main Window
         byte themeColorValue = Convert.ToByte(Properties.Settings.Default.ThemeColor);
-        
+        MediaPlayer mplayer = new MediaPlayer();
+
         public Appearance()
         {
             InitializeComponent();
@@ -99,6 +100,8 @@ namespace apptest1
             mainWin.MainGrid.Height = Properties.Settings.Default.IconSize;
             double halfWidth = mainWin.Width / 2;
             mainWin.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
+            mainWin.LabelBorder.BorderBrush = mainWin.MainGrid.Background;
+            mainWin.TestTextBlock.Background = mainWin.MainGrid.Background;
             Properties.Settings.Default.Save();
         }
 
@@ -113,7 +116,6 @@ namespace apptest1
             mainWin.SettingsButton.Height = Properties.Settings.Default.IconSize;
             mainWin.Width = mainWin.MainGrid.Children.Count * Properties.Settings.Default.IconSize + 50;
             mainWin.MainGrid.Width = mainWin.MainGrid.Children.Count * Properties.Settings.Default.IconSize;
-            //mainWin.Height = Properties.Settings.Default.IconSize;
             mainWin.MainGrid.Height = Properties.Settings.Default.IconSize;
             double halfWidth = mainWin.Width / 2;
             mainWin.Left = SystemParameters.PrimaryScreenWidth / 2 - halfWidth;
@@ -141,6 +143,12 @@ namespace apptest1
                 mainWin.MainGrid.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(Properties.Settings.Default.Opacity), themeColorValue, themeColorValue, themeColorValue));
                 mainWin.MainGridBorder.BorderBrush = mainWin.MainGrid.Background;
                 mainWin.MainGridBorder.Effect = dropShadowEffect;
+
+                // Label
+                mainWin.TestTextBlock.Foreground = Brushes.Black;
+                mainWin.LabelBorder.BorderBrush = mainWin.MainGrid.Background;
+                mainWin.TestTextBlock.Background = mainWin.MainGrid.Background;
+                mainWin.LabelGrid.Effect = dropShadowEffect;
             }
             else if(ThemeColor.SelectedValue==ThemeColorDark)
             {
@@ -155,8 +163,30 @@ namespace apptest1
                 mainWin.MainGrid.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(Properties.Settings.Default.Opacity), themeColorValue, themeColorValue, themeColorValue));
                 mainWin.MainGridBorder.BorderBrush = mainWin.MainGrid.Background;
                 mainWin.MainGridBorder.Effect = dropShadowEffect;
+
+                // Label
+                mainWin.TestTextBlock.Foreground = Brushes.White;
+                mainWin.LabelBorder.BorderBrush = mainWin.MainGrid.Background;
+                mainWin.TestTextBlock.Background = mainWin.MainGrid.Background;
+                mainWin.LabelGrid.Effect = dropShadowEffect;
+
             }
             Properties.Settings.Default.Save();
+        }
+        private void OpacityVoiceover(object sender, RoutedEventArgs e)
+        {
+            mplayer.Open(new Uri(@"C:\Users\jmsko\OneDrive\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Opacity.m4a", UriKind.Relative));
+            mplayer.Play();
+        }
+        private void ThemeVoiceover(object sender, RoutedEventArgs e)
+        {
+            mplayer.Open(new Uri(@"C:\Users\jmsko\OneDrive\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Theme.m4a", UriKind.Relative));
+            mplayer.Play();
+        }
+        private void SizeVoiceover(object sender, RoutedEventArgs e)
+        {
+            mplayer.Open(new Uri(@"C:\Users\jmsko\OneDrive\Documents\GitHub\Windows10Dock\apptest1\apptest1\SoundClips\Size.m4a", UriKind.Relative));
+            mplayer.Play();
         }
     }
 }
