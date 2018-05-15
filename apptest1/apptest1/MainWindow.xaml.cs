@@ -34,24 +34,34 @@ namespace apptest1
         StringCollection collection = new StringCollection();
 
         private byte ThemeColorValue;   // RGB color of the window.
-        string[] fileButton1;
-        string[] fileButton1reset;
-        string Label = "";
 
+        #region UNUSED CODE
+        //previously used for storage of links for the icons to be opened - no longer in use
+        //string[] fileButton1;
+        //string[] fileButton1reset;
+        //previously used for storage of the link name - no longer in use
+        //string Label = "";
+
+        //previously used to store each individual link - no longer in use
         //string[] fileButton2;
         //string[] fileButton3;
         //string[] fileButton4;
         //string[] fileButton5;
+#endregion
 
         private ContextMenu CustomContextMenu = new ContextMenu();
         
+        //the half width variable used to hold the value for half the width of the dock added to half the width of the screen for centralising the application to the users screen
         private double halfWidth;
 
+        //runs the main window and holds all the methods in regards to the main window
         public MainWindow()
         {
             InitializeComponent();
 
+            //creates and initialises the setting button
             InitializeSettingsButton();
+            //creates and initialises the exit button
             InitializeExitButton();
             collection.Remove("System.Windows.Controls");
             //tried to implement a fix using and if statement, if the shortcultList is null, for example when the application is 
@@ -65,6 +75,7 @@ namespace apptest1
                 }
             }
 
+            //sets the colour dependent on the stored values in the settings property
             ThemeColorValue = Convert.ToByte(Properties.Settings.Default.ThemeColor);
 
             // WINDOW SIZE 
@@ -73,7 +84,9 @@ namespace apptest1
 
             // PROPERTIES
 
+            //creates and initialises the drop shadows
             InitializeDropShadowEffect();
+            //sets the label default to hidden
             LabelBorder.Visibility = Visibility.Hidden;
             Triangle.Visibility = Visibility.Hidden;
             MainGrid.Background = new SolidColorBrush(Color.FromArgb(Convert.ToByte(Properties.Settings.Default.Opacity), ThemeColorValue, ThemeColorValue, ThemeColorValue));
@@ -94,30 +107,44 @@ namespace apptest1
             PositionWindow(SystemParameters.PrimaryScreenWidth / 2 - halfWidth, 0);
         }
 
+        /// <summary>
+        /// defaults for the dropshadow effects depending on the light or dark theme
+        /// </summary>
+        /// <param name="new Colour">creates a new colour data type</param>
+        /// <param name="opacity">sets the default % opacity for the shadow</param>
+        /// <param name="BlurRadius">sets the default radius for the shadows blur</param>
+        ///  <param name="ScR,ScB,ScG">sets the default RBG values for the colour data type</param>
         private void InitializeDropShadowEffect()
         {
+            // creates a new colour data type
             Color color = new Color();
+            // if the background is set to 255, white, light theme in settings
             if (Properties.Settings.Default.ThemeColor == 255)
             {
-                
+                // sets the opacity to 20%
                 dropShadow.Opacity = 0.2;
                 dropShadow.BlurRadius = 20;
                 color.ScB = 0;
                 color.ScG = 0;
                 color.ScR = 0;
+                // sets the dropshadow to the RBG
                 dropShadow.Color = color;
                 TestTextBlock.Foreground = Brushes.Black;
             }
+            // if the background is set to 0, black, dark theme in settings
             else if(Properties.Settings.Default.ThemeColor == 0)
             {
+                // sets the opacity to 70%
                 dropShadow.Opacity = 0.7;
                 dropShadow.BlurRadius = 20;
                 color.ScB = 0;
                 color.ScG = 0;
                 color.ScR = 0;
+                // sets the dropshadow to the RBG
                 dropShadow.Color = color;
                 TestTextBlock.Foreground = Brushes.White;
             }
+            // sets the maingrid to have the dropshadow effect
             MainGridBorder.Effect = dropShadow;
         }
         

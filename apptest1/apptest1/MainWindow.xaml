@@ -35,7 +35,7 @@
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border Name="MainGridBorder" CornerRadius="0,0,5,5" BorderBrush="white" BorderThickness="6"  SnapsToDevicePixels="True" UseLayoutRounding="True" >
+        <Border Name="MainGridBorder" CornerRadius="0,0,5,5" BorderBrush="white" BorderThickness="6" SnapsToDevicePixels="True" UseLayoutRounding="True" >
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20" Opacity="0.2"/>
             </Border.Effect>
