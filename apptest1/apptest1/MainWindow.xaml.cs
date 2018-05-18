@@ -124,6 +124,8 @@ namespace apptest1
                 // sets the opacity to 20%
                 dropShadow.Opacity = 0.2;
                 dropShadow.BlurRadius = 20;
+                dropShadow.ShadowDepth = 10;
+                dropShadow.Direction = 90;
                 color.ScB = 0;
                 color.ScG = 0;
                 color.ScR = 0;
@@ -137,6 +139,8 @@ namespace apptest1
                 // sets the opacity to 70%
                 dropShadow.Opacity = 0.7;
                 dropShadow.BlurRadius = 20;
+                dropShadow.ShadowDepth = 1;
+                dropShadow.Direction = 90;
                 color.ScB = 0;
                 color.ScG = 0;
                 color.ScR = 0;

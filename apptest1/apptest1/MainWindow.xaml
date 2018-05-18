@@ -39,7 +39,7 @@
             <Border.Effect>
                 <!--Blur radius blurs the edges, 30% opacity, shadowdepth is the distance the shadow occurs from the object, direction 90 degrees (upwards)-->
                 <!--This drop shadow affects the whole dock, including icons and window-->
-                <DropShadowEffect BlurRadius="20" Opacity="0.3" ShadowDepth="10" Direction="90"/>
+                <DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="10" Direction="90"/>
             </Border.Effect>
             <UniformGrid Columns="2" Rows="1" x:Name="MainGrid" Background="White" AllowDrop="True" VerticalAlignment="Top">
                 <Button x:Name="SettingsButton" Click="Button_Click_7" Width="{Binding Height, ElementName=SettingsButton}" Height="48" AllowDrop="True">
