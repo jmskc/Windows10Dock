@@ -95,10 +95,10 @@ namespace apptest1
             MainGridBorder.BorderBrush = MainGrid.Background;
             LabelBorder.BorderBrush = MainGrid.Background;
             TestTextBlock.Background = MainGrid.Background;
-            SettingsButton.Height = Properties.Settings.Default.IconSize;
+            //this line caused some issues with the settings buttons default display
+            //SettingsButton.Height = Properties.Settings.Default.IconSize;
 
             // POSITION
-            //can probably move this into a method/class just returning the variables?
             //sets half the width of the main window as a variable for formatting use
             double halfWidth = this.Width / 2;
 
@@ -230,6 +230,13 @@ namespace apptest1
             button.Click += (s, f) => { Settings Settings = new Settings(); Settings.Show(); };   // Button click event
         }
 
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            Settings Settings = new Settings();
+            Settings.Show();
+        }
+
+        #region UNUSED CODE 2
         //private void Button_Click_1(object sender, RoutedEventArgs e)
         //{
         //    Process.Start(fileButton1[0]);
@@ -255,12 +262,6 @@ namespace apptest1
         //{
         //    Process.Start(fileButton5[0]);
         //}
-
-        private void Button_Click_7(object sender, RoutedEventArgs e)
-        {
-            Settings Settings = new Settings();
-            Settings.Show();
-        }
 
         //private void Button_Drop_1(object sender, DragEventArgs e)
         //{
@@ -317,7 +318,7 @@ namespace apptest1
         //}
         //private void Button_Drop_2(object sender, DragEventArgs e)
         //{
-            
+
         //    if (e.Data.GetDataPresent(DataFormats.FileDrop))
         //    {
         //        fileButton2 = (string[])e.Data.GetData(DataFormats.FileDrop);
@@ -395,11 +396,11 @@ namespace apptest1
         ///// </summary>
         //private void Button_Drop_4(object sender, DragEventArgs e)
         //{
-            
+
         //    if (e.Data.GetDataPresent(DataFormats.FileDrop))
         //    {
         //        Models.ShortcutModel Shortcut = new Models.ShortcutModel();
-                
+
         //        fileButton4 = (string[])e.Data.GetData(DataFormats.FileDrop);
 
         //        Shortcut.Path = String.Concat(fileButton4);
@@ -412,7 +413,7 @@ namespace apptest1
         //                                    BitmapSizeOptions.FromEmptyOptions());
 
         //            Icon4.Source = Shortcut.BitmapSource;
-                    
+
         //        }
 
         //        catch (FileNotFoundException)
@@ -453,6 +454,8 @@ namespace apptest1
         //        }
         //    }
         //}
+
+#endregion
 
         /// <summary>
         /// Checks whether another widnow is open.
