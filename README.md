@@ -12,24 +12,33 @@ The Windows 10 Dock is an application that allows the user to place, access and 
 
 # Contributors
 
-- Jan
-- Josh
-- Ryan
-- Diogo
-- Callum
+- Jan Skoczylas
+- Joshua Mckone
+- Ryan Hilton
+- Diogo Ribeiro
+- Callum Darling
 
-(need last names and github links)
+(need github links)
 
----------------------------------------------------------
-		     Implemented Features		
----------------------------------------------------------
+----------------------
+ Implemented Features		
+----------------------
 
 - drag and drop canvas
+- settings
+ - icon size
+ - opacity
+ - colour theme
+  - dark
+  - light
+- exit application
+- right click to delete existing icon
+- animations on interaction
 
----------------------------------------------------------
-			Future Features			
----------------------------------------------------------
+-----------------
+ Future Features			
+-----------------
 
-----------------
-  known issues 
-----------------
+---------------
+ known issues 
+---------------
