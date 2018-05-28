@@ -1,34 +1,35 @@
 # Windows 10 Dock
 
-#What is the Windows 10 Dock? 
+# What is the Windows 10 Dock? 
 
 The Windows 10 Dock is an application that allows the user to place, access and delete external application icons.
 
-#Benefits
+# Benefits
 
 - folder drop
 - easy to use
 - customisable appearance
 
-#Contributors
+# Contributors
 
 - Jan
 - Josh
 - Ryan
 - Diogo
 - Callum
+
 (need last names and github links)
 
 ---------------------------------------------------------
--		     Implemented Features		-
+		     Implemented Features		
 ---------------------------------------------------------
 
 - drag and drop canvas
 
 ---------------------------------------------------------
--			Future Features			-
+			Future Features			
 ---------------------------------------------------------
 
 ----------------
-- known issues -
+  known issues 
 ----------------
