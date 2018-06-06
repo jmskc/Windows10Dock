@@ -624,7 +624,7 @@ namespace apptest1
             collection.Add(shortcut.Path);
             ContextMenu contextMenu = new ContextMenu();
             button.ContextMenu = contextMenu;
-            button.ToolTip = shortcut.Name;
+            //button.ToolTip = shortcut.Name;
             // Re used Ryan's deletion code for this purpouse + Remove button from Item Control + resize window
             MenuItem DeleteItem = new MenuItem();
             DeleteItem.Header = "Delete";
@@ -688,7 +688,7 @@ namespace apptest1
             collection.Add(shortcut.Path);
             ContextMenu contextMenu = new ContextMenu();
             button.ContextMenu = contextMenu;
-            button.ToolTip = shortcut.Name;
+            //button.ToolTip = shortcut.Name;
             // Re used Ryan's deletion code for this purpouse + Remove button from Item Control + resize window
             MenuItem DeleteItem = new MenuItem();
             DeleteItem.Header = "Delete";
