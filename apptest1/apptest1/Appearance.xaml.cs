@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace apptest1
 {
@@ -113,7 +105,8 @@ namespace apptest1
             int val = Convert.ToInt32(IconSizeSlider.Value);
             IconSizeValue.Text = val.ToString() + "px";
             Properties.Settings.Default.IconSize = val;
-            mainWin.SettingsButton.Height = Properties.Settings.Default.IconSize;
+            //this line caused an issue witht the settings button display when resizing
+            //mainWin.SettingsButton.Height = Properties.Settings.Default.IconSize;
             mainWin.Width = mainWin.MainGrid.Children.Count * Properties.Settings.Default.IconSize + 50;
             mainWin.MainGrid.Width = mainWin.MainGrid.Children.Count * Properties.Settings.Default.IconSize;
             mainWin.MainGrid.Height = Properties.Settings.Default.IconSize;

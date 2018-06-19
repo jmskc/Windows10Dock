@@ -3,11 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:system="clr-namespace:System;assembly=mscorlib"
-        xmlns:local="clr-namespace:apptest1"
 
         mc:Ignorable="d"
-        
         
         Title="testApp" 
         ResizeMode="NoResize" 
@@ -35,17 +32,28 @@
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border Name="MainGridBorder" CornerRadius="0,0,5,5" BorderBrush="white" BorderThickness="6"  SnapsToDevicePixels="True" UseLayoutRounding="True" >
+        <Border Name="MainGridBorder" CornerRadius="0,0,5,5" BorderBrush="white" BorderThickness="6" SnapsToDevicePixels="True" UseLayoutRounding="True" >
             <Border.Effect>
-                <DropShadowEffect BlurRadius="20" Opacity="0.2"/>
+                <!--Blur radius blurs the edges, 30% opacity, shadowdepth is the distance the shadow occurs from the object, direction 90 degrees (upwards)-->
+                <!--This drop shadow affects the whole dock, including icons and window-->
+                <DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="10" Direction="90"/>
             </Border.Effect>
-            <UniformGrid Columns="2" Rows="1" x:Name="MainGrid" Background="White" AllowDrop="True" VerticalAlignment="Top">
-                <Button x:Name="SettingsButton" Click="Button_Click_7" Width="{Binding Height, ElementName=SettingsButton}" Height="48" AllowDrop="True">
-                    <Image Source="/Icons/Settings.ico" HorizontalAlignment="Center"/>
-                </Button>
-                <Button x:Name="ExitButton">
-                    <Image Source="/Icons/Exit.ico" HorizontalAlignment="Center"/>
-                </Button>
+            <UniformGrid Columns="2" Rows="1" x:Name="MainGrid" Background="White" AllowDrop="True">
+                
+                <!--enabling the following uniformGrids (including the close below the code block) and disabling the above 
+                uniformGrid allows for the settings and exit icons to toggle change from larger adjacent to smaller and stacked-->
+                <!--<UniformGrid Columns="1" Rows="1" x:Name="MainGrid" Background="White" AllowDrop="True">
+                <UniformGrid Rows="2" Columns="1" HorizontalAlignment="Center">-->
+                
+                    <Button x:Name="SettingsButton" Click="Button_Click_7" >
+                        <Image Source="/Icons/Settings.ico" HorizontalAlignment="Center"/>
+                    </Button>
+                    <Button x:Name="ExitButton">
+                        <Image Source="/Icons/Exit.ico" HorizontalAlignment="Center"/>
+                    </Button>
+                
+                    <!--</UniformGrid>-->
+                
             </UniformGrid>
         </Border>
         <Grid Name="LabelGrid" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"  SnapsToDevicePixels="True" UseLayoutRounding="True" >
